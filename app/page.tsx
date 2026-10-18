@@ -193,12 +193,14 @@ const shopGallery = [
   {
     type: "video",
     src: "/shop-video-01.mp4",
+    poster: "/shop-video-01.png",
     label: "V1",
     alt: "LUMINA Beauty Device video 01",
   },
   {
     type: "video",
     src: "/shop-video-02.mp4",
+    poster: "/shop-video-02.png",
     label: "V2",
     alt: "LUMINA Beauty Device video 02",
   },
@@ -1056,6 +1058,11 @@ export default function Home() {
                     key={shopGallery[shopMediaIndex].src}
                     className="shopGalleryMainMedia"
                     src={shopGallery[shopMediaIndex].src}
+                    poster={
+                      "poster" in shopGallery[shopMediaIndex]
+                        ? shopGallery[shopMediaIndex].poster
+                        : undefined
+                    }
                     autoPlay
                     muted
                     loop
@@ -1086,11 +1093,9 @@ export default function Home() {
                         {item.type === "image" ? (
                           <img src={item.src} alt="" aria-hidden="true" />
                         ) : (
-                          <video
-                            src={item.src}
-                            muted
-                            playsInline
-                            preload="metadata"
+                          <img
+                            src={"poster" in item ? item.poster : item.src}
+                            alt=""
                             aria-hidden="true"
                           />
                         )}
