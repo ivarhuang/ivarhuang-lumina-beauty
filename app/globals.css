@@ -1,26 +1,1870 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+html,
+body {
+  margin: 0;
+  padding: 0;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  width: 100%;
+  min-height: 100%;
+
+  background: #000;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ======================================================
+   INTRO
+====================================================== */
+
+.introScreen {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: #000;
+
+  overflow: hidden;
+
+  z-index: 99999;
+
+  opacity: 1;
+}
+
+.introLettersStage {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.introSingleLetter {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: min(34vw, 520px);
+  height: min(55vh, 620px);
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  will-change:
+    opacity,
+    transform;
+}
+
+.introSingleLetter svg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  overflow: visible;
+}
+
+.introFullLogo {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 88vw;
+
+  max-width: none;
+
+  height: auto;
+
+  display: block;
+
+  opacity: 0;
+
+  pointer-events: none;
+  user-select: none;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+/* ======================================================
+   SITE
+====================================================== */
+
+.site {
+  width: 100%;
+
+  min-height: 100vh;
+
+  background: #000;
+
+  color: #fff;
+
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 700px;
+
+  overflow: hidden;
+
+  background: #000;
+}
+
+.heroVideo {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position:
+    center center;
+
+  filter: none;
+
+  opacity: 1;
+}
+
+.heroLogoAnchor {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 999;
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+.heroLogoMove {
+  width: 88vw;
+
+  pointer-events: none;
+
+  will-change:
+    transform;
+}
+
+.heroLogo {
+  width: 100%;
+
+  max-width: none;
+
+  height: auto;
+
+  display: block;
+
+  opacity: 0.42;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+.heroStatement {
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  z-index: 1000;
+
+  width: 78vw;
+
+  transform:
+    translateY(-50%);
+
+  padding-left: 18px;
+
+  color: #fff;
+
+  font-size: clamp(
+    54px,
+    6.3vw,
+    120px
+  );
+
+  font-weight: 500;
+
+  line-height: 0.84;
+
+  letter-spacing: -0.06em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.heroNav {
+  position: absolute;
+
+  top: 28px;
+  right: 30px;
+
+  z-index: 1100;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+  color: #fff;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.heroNav a {
+  color: #fff;
+
+  transition:
+    opacity 0.25s ease;
+}
+
+.heroNav a:hover {
+  opacity: 0.55;
+}
+
+.scrollText {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 20px;
+
+  z-index: 1100;
+
+  transform:
+    translateX(-50%);
+
+  color: #fff;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+.heroFooter {
+  position: absolute;
+
+  right: 18px;
+
+  bottom: 20px;
+
+  z-index: 1100;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 42px;
+
+  color: #fff;
+
+  font-size: 12px;
+}
+
+/* ======================================================
+   PRODUCT PAGE
+====================================================== */
+
+.productPage {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 720px;
+
+  overflow: hidden;
+
+  background: #f4f4f1;
+
+  color: #090909;
+
+  padding:
+    20px
+    22px
+    18px;
+
+  display: grid;
+
+  grid-template-rows:
+    auto
+    auto
+    1fr
+    auto;
+}
+
+/* ======================================================
+   PRODUCT HEADER
+====================================================== */
+
+.productHeader {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 12px;
+
+  line-height: 1;
+}
+
+.productBrand {
+  font-weight: 700;
+
+  letter-spacing: -0.03em;
+}
+
+.productHeaderRight {
+  display: flex;
+
+  gap: 32px;
+
+  font-weight: 500;
+}
+
+/* ======================================================
+   PRODUCT TITLE
+====================================================== */
+
+.productPageTitle {
+  margin:
+    22px
+    0
+    28px;
+
+  padding: 0;
+
+  font-size: clamp(
+    50px,
+    4.7vw,
+    90px
+  );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  letter-spacing: -0.065em;
+}
+
+/* ======================================================
+   MAIN LAYOUT
+====================================================== */
+
+.productLayout {
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(360px, 0.88fr)
+    minmax(600px, 1.55fr);
+
+  gap: clamp(
+    50px,
+    7vw,
+    140px
+  );
+
+  align-items: stretch;
+}
+
+/* ======================================================
+   LEFT IMAGE
+====================================================== */
+
+.productMediaColumn {
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.productMedia {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.productMedia img {
+  width: auto;
+  height: 100%;
+
+  max-width: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  border: 1px solid #111;
+}
+
+.productMediaCaption {
+  padding-top: 9px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  font-size: 12px;
+
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+}
+
+/* ======================================================
+   RIGHT CONTENT
+====================================================== */
+
+.productContent {
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+.productLead {
+  width: min(
+    760px,
+    100%
+  );
+
+  margin-bottom: 20px;
+
+  font-size: clamp(
+    17px,
+    1.15vw,
+    22px
+  );
+
+  line-height: 1.35;
+
+  letter-spacing: -0.025em;
+}
+
+/* ======================================================
+   FEATURE GRID
+====================================================== */
+
+.featureGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: clamp(
+    36px,
+    4vw,
+    78px
+  );
+
+  align-content: start;
+}
+
+.featureItem {
+  min-height: 98px;
+
+  padding:
+    17px
+    0
+    13px;
+
+  border-top:
+    1px solid
+    rgba(0, 0, 0, 0.28);
+
+  display: grid;
+
+  grid-template-columns:
+    34px
+    minmax(0, 1fr);
+
+  gap: 12px;
+}
+
+.featureItemWide {
+  grid-column: span 2;
+}
+
+.featureNumber {
+  padding-top: 2px;
+
+  font-size: 9px;
+
+  line-height: 1;
+
+  opacity: 0.42;
+}
+
+.featureBody h3 {
+  margin:
+    0
+    0
+    7px;
+
+  font-size: clamp(
+    13px,
+    0.9vw,
+    16px
+  );
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  letter-spacing: -0.015em;
+}
+
+.featureBody p {
+  margin: 0;
+
+  font-size: clamp(
+    12px,
+    0.78vw,
+    14px
+  );
+
+  line-height: 1.35;
+
+  opacity: 0.62;
+}
+
+/* ======================================================
+   PRODUCT STATEMENT
+====================================================== */
+
+.productStatement {
+  margin-top: 18px;
+
+  padding-top: 12px;
+
+  border-top:
+    1px solid
+    rgba(0, 0, 0, 0.28);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  font-size: clamp(
+    15px,
+    1.25vw,
+    24px
+  );
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+/* ======================================================
+   PRODUCT FOOTER
+====================================================== */
+
+.productFooter {
+  padding-top: 12px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  font-size: 9px;
+
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+}
+
+/* ======================================================
+   OTHER SECTIONS
+====================================================== */
+
+.section {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding:
+    40px
+    34px
+    70px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content:
+    space-between;
+}
+
+.sectionLight {
+  background: #eeeeea;
+
+  color: #070707;
+}
+
+.sectionDark {
+  background: #000;
+
+  color: #fff;
+}
+
+.sectionLabel {
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+}
+
+.section h2 {
+  margin: 0;
+
+  font-size: clamp(
+    90px,
+    12vw,
+    230px
+  );
+
+  font-weight: 500;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.075em;
+}
+
+/* ======================================================
+   MEDIUM DESKTOP
+====================================================== */
+
+@media (max-width: 1400px) {
+  .productPage {
+    padding:
+      18px
+      18px
+      16px;
+  }
+
+  .productPageTitle {
+    margin:
+      18px
+      0
+      22px;
+  }
+
+  .productLayout {
+    grid-template-columns:
+      minmax(320px, 0.82fr)
+      minmax(560px, 1.45fr);
+
+    gap: 50px;
+  }
+
+  .featureItem {
+    min-height: 86px;
+
+    padding:
+      13px
+      0
+      11px;
+  }
+
+  .productLead {
+    margin-bottom: 12px;
+  }
+
+  .productStatement {
+    margin-top: 10px;
+  }
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 1100px) {
+  .introSingleLetter {
+    width: min(
+      48vw,
+      480px
+    );
+  }
+
+  .introFullLogo {
+    width: 92vw;
+  }
+
+  .heroLogoMove {
+    width: 92vw;
+  }
+
+  .heroStatement {
+    width: 86vw;
+
+    font-size: 7vw;
+  }
+
+  .heroNav {
+    gap: 18px;
+
+    font-size: 11px;
+  }
+
+  /*
+   * Tablet 開始允許 PRODUCT 頁面變長。
+   * Desktop 仍維持一個畫面。
+   */
+
+  .productPage {
+    height: auto;
+
+    min-height: 100vh;
+
+    overflow: visible;
+  }
+
+  .productLayout {
+    grid-template-columns:
+      minmax(280px, 0.85fr)
+      minmax(0, 1.25fr);
+
+    gap: 36px;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featureItemWide {
+    grid-column: auto;
+  }
+
+  .productStatement {
+    flex-wrap: wrap;
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 700px) {
+  .introSingleLetter {
+    width: 68vw;
+
+    height: 52vh;
+  }
+
+  .introFullLogo {
+    width: 96vw;
+  }
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .heroLogoMove {
+    width: 96vw;
+  }
+
+  .heroStatement {
+    width: 96vw;
+
+    padding-left: 12px;
+
+    font-size: 11vw;
+
+    line-height: 0.86;
+  }
+
+  .heroNav {
+    top: auto;
+    right: auto;
+
+    left: 14px;
+    bottom: 64px;
+
+    gap: 18px;
+
+    font-size: 10px;
+  }
+
+  .scrollText {
+    left: 14px;
+
+    bottom: 18px;
+
+    transform: none;
+
+    font-size: 10px;
+  }
+
+  .heroFooter {
+    right: 12px;
+
+    bottom: 18px;
+
+    gap: 24px;
+
+    font-size: 9px;
+  }
+
+  /* PRODUCT */
+
+  .productPage {
+    height: auto;
+
+    min-height: 100vh;
+
+    padding:
+      14px
+      12px
+      20px;
+  }
+
+  .productHeaderRight {
+    gap: 14px;
+
+    font-size: 9px;
+  }
+
+  .productPageTitle {
+    margin:
+      28px
+      0
+      28px;
+
+    font-size: 16vw;
+  }
+
+  .productLayout {
+    display: block;
+  }
+
+  .productMedia {
+    height: 62vh;
+  }
+
+  .productMediaCaption {
+    margin-bottom: 34px;
+  }
+
+  .productLead {
+    margin-bottom: 32px;
+
+    font-size: 18px;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featureItem {
+    min-height: auto;
+
+    padding:
+      18px
+      0;
+  }
+
+  .featureItemWide {
+    grid-column: auto;
+  }
+
+  .productStatement {
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 32px;
+
+    font-size: 22px;
+  }
+
+  .productFooter {
+    margin-top: 42px;
+  }
+}
+
+/* ======================================================
+   CURRENT PRODUCT VISUAL SYSTEM
+   PRODUCT uses the same pastel language as EXPERIENCE.
+====================================================== */
+
+.productPage {
+  background:
+    radial-gradient(
+      circle at 16% 20%,
+      rgba(118, 242, 235, 0.82) 0%,
+      rgba(118, 242, 235, 0.18) 20%,
+      rgba(118, 242, 235, 0) 42%
+    ),
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(215, 173, 255, 0.88) 0%,
+      rgba(215, 173, 255, 0.18) 24%,
+      rgba(215, 173, 255, 0) 44%
+    ),
+    radial-gradient(
+      circle at 36% 70%,
+      rgba(255, 185, 118, 0.86) 0%,
+      rgba(255, 185, 118, 0.18) 24%,
+      rgba(255, 185, 118, 0) 46%
+    ),
+    radial-gradient(
+      circle at 84% 72%,
+      rgba(255, 103, 133, 0.78) 0%,
+      rgba(255, 103, 133, 0.22) 22%,
+      rgba(255, 103, 133, 0) 44%
+    ),
+    linear-gradient(
+      135deg,
+      #9ddff2 0%,
+      #b59bff 38%,
+      #ff8fb1 68%,
+      #ff9a5a 100%
+    ) !important;
+
+  color: #ffffff !important;
+}
+
+.productPage,
+.productPage * {
+  color: #ffffff !important;
+}
+
+/* White separators on the gradient */
+.productPage .featureItem,
+.productPage .productStatement {
+  border-color: rgba(255, 255, 255, 0.34) !important;
+}
+
+/* Stronger feature typography */
+.productPage .featureBody h3 {
+  font-size: clamp(16px, 1.05vw, 20px) !important;
+  line-height: 1.05 !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+  opacity: 1 !important;
+}
+
+.productPage .featureBody p {
+  font-size: clamp(14px, 0.92vw, 17px) !important;
+  line-height: 1.42 !important;
+  opacity: 0.88 !important;
+}
+
+.productPage .featureNumber {
+  font-size: 10px !important;
+  opacity: 0.68 !important;
+}
+
+.productPage .featureItem {
+  padding-top: 18px !important;
+  padding-bottom: 16px !important;
+}
+
+/* Technology scanner adapted for the light text system */
+.productPage .techMotionRail {
+  border-top-color: rgba(255, 255, 255, 0.28) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.28) !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.03)
+    ) !important;
+}
+
+.productPage .techMotionRail::before {
+  background: rgba(255, 255, 255, 0.32) !important;
+}
+
+.productPage .techMotionScanner {
+  background: rgba(10, 10, 10, 0.88) !important;
+}
+
+.productPage .techMotionScanner::after {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 10, 10, 0.28),
+      rgba(10, 10, 10, 0)
+    ) !important;
+}
+
+.productPage .techMotionLabels span {
+  color: #ffffff !important;
+  mix-blend-mode: normal !important;
+}
+
+/* ======================================================
+   PRODUCT LEFT HERO — transparent device + glow + type
+====================================================== */
+
+.productPage .productMediaColumn {
+  position: relative;
+}
+
+.productPage .productVisual {
+  position: relative;
+  isolation: isolate;
+
+  overflow: visible !important;
+
+  background: transparent !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Large soft light field behind the transparent PNG */
+.productPage .productVisualGlow {
+  position: absolute;
+
+  left: 50%;
+  top: 48%;
+
+  width: 92%;
+  height: 86%;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 38% 28%,
+      rgba(255, 255, 255, 0.44) 0%,
+      rgba(255, 255, 255, 0.13) 25%,
+      rgba(255, 255, 255, 0) 52%
+    ),
+    radial-gradient(
+      circle at 68% 36%,
+      rgba(210, 179, 255, 0.34) 0%,
+      rgba(210, 179, 255, 0.10) 28%,
+      rgba(210, 179, 255, 0) 56%
+    ),
+    radial-gradient(
+      circle at 48% 76%,
+      rgba(255, 170, 126, 0.28) 0%,
+      rgba(255, 170, 126, 0.08) 30%,
+      rgba(255, 170, 126, 0) 58%
+    );
+
+  filter: blur(22px);
+}
+
+/* Transparent product PNG */
+.productPage .productMedia .productDeviceImage {
+  position: relative;
+
+  z-index: 2;
+
+  width: auto;
+  height: 94%;
+
+  max-width: 92%;
+
+  object-fit: contain;
+  object-position: center;
+
+  border: 0 !important;
+
+  opacity: 1 !important;
+
+  mix-blend-mode: normal !important;
+
+  filter:
+    brightness(1.035)
+    contrast(0.97)
+    saturate(0.94)
+    drop-shadow(0 30px 24px rgba(54, 31, 70, 0.14))
+    drop-shadow(0 8px 10px rgba(255, 255, 255, 0.09)) !important;
+
+  box-shadow: none !important;
+}
+
+/* Soft reflection/shadow underneath the device */
+.productPage .productVisual::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 5%;
+
+  width: 58%;
+  height: 8%;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(44, 27, 58, 0.18) 0%,
+      rgba(44, 27, 58, 0.08) 38%,
+      rgba(44, 27, 58, 0) 72%
+    );
+
+  filter: blur(12px);
+}
+
+/* Editorial text is now live HTML, not baked into the image */
+.productPage .productVisualWords {
+  position: absolute;
+
+  left: 2%;
+  bottom: 7%;
+
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+
+  pointer-events: none;
+
+  font-size: clamp(38px, 3.65vw, 72px);
+  font-weight: 700;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.07em;
+
+  color: #ffffff !important;
+
+  opacity: 0.34;
+}
+
+.productPage .productVisualWords span {
+  color: #ffffff !important;
+}
+
+/* The old rectangular-photo caption remains, but visually lighter */
+.productPage .productMediaCaption {
+  color: #ffffff !important;
+  opacity: 0.86;
+}
+
+@media (max-width: 1400px) {
+  .productPage .featureBody h3 {
+    font-size: 17px !important;
+  }
+
+  .productPage .featureBody p {
+    font-size: 14px !important;
+  }
+
+  .productPage .productVisualWords {
+    font-size: clamp(34px, 3.5vw, 58px);
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .featureBody h3 {
+    font-size: 16px !important;
+  }
+
+  .productPage .featureBody p {
+    font-size: 14px !important;
+  }
+
+  .productPage .productVisual {
+    height: 62vh;
+  }
+
+  .productPage .productMedia .productDeviceImage {
+    height: 88%;
+    max-width: 94%;
+  }
+
+  .productPage .productVisualWords {
+    left: 0;
+    bottom: 5%;
+
+    font-size: clamp(38px, 12vw, 62px);
+  }
+}
+
+
+/* ======================================================
+   PRODUCT LEFT HERO — REFINED LAYOUT
+   1. Bigger device
+   2. No visible rectangle
+   3. Center-left composition
+   4. Larger BEAUTY ENGINEERED across lower middle
+   5. Semi-transparent white type
+   6. Glow only behind device
+   7. Right-side content untouched
+====================================================== */
+
+.productPage .productMedia,
+.productPage .productVisual {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.productPage .productVisual {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important;
+  padding-left: 2.5%;
+}
+
+.productPage .productVisualGlow {
+  left: 42%;
+  top: 44%;
+  width: 74%;
+  height: 78%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 40% 28%,
+      rgba(255, 255, 255, 0.52) 0%,
+      rgba(255, 255, 255, 0.18) 24%,
+      rgba(255, 255, 255, 0) 56%
+    ),
+    radial-gradient(
+      circle at 68% 34%,
+      rgba(210, 179, 255, 0.34) 0%,
+      rgba(210, 179, 255, 0.12) 28%,
+      rgba(210, 179, 255, 0) 58%
+    ),
+    radial-gradient(
+      circle at 48% 74%,
+      rgba(255, 170, 126, 0.24) 0%,
+      rgba(255, 170, 126, 0.08) 32%,
+      rgba(255, 170, 126, 0) 60%
+    );
+  filter: blur(30px);
+}
+
+.productPage .productMedia .productDeviceImage {
+  position: relative;
+  z-index: 2;
+
+  height: 97%;
+  width: auto;
+  max-width: 84%;
+
+  margin-left: 7%;
+
+  object-fit: contain;
+  object-position: center;
+
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  filter:
+    brightness(1.035)
+    contrast(0.98)
+    saturate(0.95)
+    drop-shadow(0 30px 26px rgba(54, 31, 70, 0.14))
+    drop-shadow(0 8px 10px rgba(255, 255, 255, 0.08)) !important;
+}
+
+.productPage .productVisual::after {
+  left: 42%;
+  bottom: 6%;
+  width: 40%;
+  height: 6.5%;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(44, 27, 58, 0.20) 0%,
+      rgba(44, 27, 58, 0.10) 38%,
+      rgba(44, 27, 58, 0) 72%
+    );
+  filter: blur(12px);
+}
+
+.productPage .productVisualWords {
+  position: absolute;
+  left: 50%;
+  top: 68%;
+  bottom: auto;
+
+  width: 100%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  pointer-events: none;
+
+  font-size: clamp(54px, 4.85vw, 92px);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+
+  color: rgba(255, 255, 255, 0.38) !important;
+  opacity: 1 !important;
+}
+
+.productPage .productVisualWords span {
+  display: block !important;
+  color: rgba(255, 255, 255, 0.38) !important;
+}
+
+@media (max-width: 1400px) {
+  .productPage .productVisual {
+    padding-left: 1%;
+  }
+
+  .productPage .productMedia .productDeviceImage {
+    max-width: 86%;
+    margin-left: 4%;
+  }
+
+  .productPage .productVisualWords {
+    top: 69%;
+    font-size: clamp(46px, 4.5vw, 74px);
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisual {
+    justify-content: center !important;
+    padding-left: 0;
+  }
+
+  .productPage .productVisualGlow {
+    left: 50%;
+    top: 42%;
+    width: 88%;
+    height: 74%;
+  }
+
+  .productPage .productMedia .productDeviceImage {
+    height: 92%;
+    max-width: 88%;
+    margin-left: 0;
+  }
+
+  .productPage .productVisual::after {
+    left: 50%;
+    width: 52%;
+  }
+
+  .productPage .productVisualWords {
+    top: 70%;
+    font-size: clamp(42px, 12vw, 66px);
+  }
+}
+
+
+/* ======================================================
+   PRODUCT LEFT HERO — TEXT POSITION REFINEMENT
+====================================================== */
+
+.productPage .productVisualWords {
+  left: 44% !important;
+  top: 64% !important;
+
+  width: 88% !important;
+
+  transform: translate(-50%, -50%) !important;
+
+  align-items: center !important;
+  text-align: center !important;
+
+  font-size: clamp(50px, 4.5vw, 84px) !important;
+  line-height: 0.82 !important;
+}
+
+@media (max-width: 1400px) {
+  .productPage .productVisualWords {
+    left: 44% !important;
+    top: 65% !important;
+    width: 90% !important;
+    font-size: clamp(44px, 4.2vw, 70px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisualWords {
+    left: 50% !important;
+    top: 68% !important;
+    width: 100% !important;
+    font-size: clamp(40px, 11vw, 62px) !important;
+  }
+}
+
+
+/* ======================================================
+   PRODUCT POSTER TYPE — align with PRODUCT title
+   Inspired by the large EXPERIENCE typography.
+   Stays inside the left column so it never covers the
+   feature descriptions on the right.
+====================================================== */
+
+.productPage .productVisualWords {
+  left: 0 !important;
+  top: 58% !important;
+
+  width: 96% !important;
+
+  transform: none !important;
+
+  align-items: flex-start !important;
+  text-align: left !important;
+
+  font-size: clamp(58px, 4.25vw, 86px) !important;
+  line-height: 0.80 !important;
+  letter-spacing: -0.07em !important;
+
+  color: rgba(255, 255, 255, 0.40) !important;
+  opacity: 1 !important;
+}
+
+.productPage .productVisualWords span {
+  display: block !important;
+  width: 100% !important;
+  color: rgba(255, 255, 255, 0.40) !important;
+}
+
+@media (max-width: 1400px) {
+  .productPage .productVisualWords {
+    left: 0 !important;
+    top: 60% !important;
+    width: 96% !important;
+    font-size: clamp(50px, 4.05vw, 72px) !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .productPage .productVisualWords {
+    font-size: clamp(44px, 4.6vw, 64px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisualWords {
+    left: 0 !important;
+    top: 67% !important;
+    width: 100% !important;
+    font-size: clamp(42px, 12vw, 64px) !important;
+  }
+}
+
+
+/* ======================================================
+   PRODUCT POSTER TYPE — FINAL ALIGNMENT
+   Match the EXPERIENCE poster treatment more closely.
+====================================================== */
+
+/* Remove the visual's internal left padding so poster text can
+   share the exact left edge used by the Product heading. */
+.productPage .productVisual {
+  padding-left: 0 !important;
+}
+
+/* Keep the device slightly inboard without moving the poster type. */
+.productPage .productMedia .productDeviceImage {
+  margin-left: 7% !important;
+}
+
+/* Large editorial type: left aligned, much larger, confined to left column. */
+.productPage .productVisualWords {
+  left: 0 !important;
+  top: 59% !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
+  transform: none !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+
+  text-align: left !important;
+
+  font-size: clamp(78px, 5.5vw, 104px) !important;
+  font-weight: 500 !important;
+  line-height: 0.78 !important;
+  letter-spacing: -0.075em !important;
+
+  color: rgba(255, 255, 255, 0.46) !important;
+  opacity: 1 !important;
+
+  overflow: visible !important;
+  pointer-events: none !important;
+}
+
+.productPage .productVisualWords span {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+
+  color: rgba(255, 255, 255, 0.46) !important;
+
+  white-space: nowrap !important;
+}
+
+/* On narrower desktops, keep it large but safely inside the left column. */
+@media (max-width: 1400px) {
+  .productPage .productVisualWords {
+    left: 0 !important;
+    top: 60% !important;
+    width: 100% !important;
+
+    font-size: clamp(68px, 5.2vw, 88px) !important;
+  }
+
+  .productPage .productMedia .productDeviceImage {
+    margin-left: 5% !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .productPage .productVisualWords {
+    font-size: clamp(58px, 6vw, 76px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisualWords {
+    left: 0 !important;
+    top: 68% !important;
+
+    width: 100% !important;
+
+    font-size: clamp(46px, 13vw, 68px) !important;
+  }
+
+  .productPage .productMedia .productDeviceImage {
+    margin-left: 0 !important;
+  }
+}
+
+
+/* ======================================================
+   PRODUCT POSTER TYPE — MAX SIZE WITHOUT CROSSING RIGHT COLUMN
+====================================================== */
+
+.productPage .productVisualWords {
+  left: 0 !important;
+  top: 58% !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
+  transform: none !important;
+
+  align-items: flex-start !important;
+  text-align: left !important;
+
+  font-size: clamp(92px, 6.2vw, 118px) !important;
+  font-weight: 500 !important;
+  line-height: 0.76 !important;
+  letter-spacing: -0.085em !important;
+
+  overflow: hidden !important;
+}
+
+.productPage .productVisualWords span {
+  display: block !important;
+
+  width: max-content !important;
+  max-width: 100% !important;
+
+  white-space: nowrap !important;
+}
+
+/* Keep the longest word safely inside the left column */
+.productPage .productVisualWords span:last-child {
+  font-size: 0.94em !important;
+}
+
+@media (max-width: 1400px) {
+  .productPage .productVisualWords {
+    font-size: clamp(76px, 6vw, 98px) !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .productPage .productVisualWords {
+    font-size: clamp(62px, 6.5vw, 82px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisualWords {
+    top: 68% !important;
+    font-size: clamp(48px, 13.5vw, 68px) !important;
+    overflow: visible !important;
+  }
+
+  .productPage .productVisualWords span:last-child {
+    font-size: 0.88em !important;
+  }
+}
+
+
+/* ======================================================
+   PRODUCT POSTER TYPE — LARGER + MORE LINE SPACING
+====================================================== */
+
+.productPage .productVisualWords {
+  font-size: clamp(104px, 7vw, 132px) !important;
+  line-height: 0.76 !important;
+
+  gap: 14px !important;
+}
+
+.productPage .productVisualWords span:last-child {
+  font-size: 0.92em !important;
+}
+
+@media (max-width: 1400px) {
+  .productPage .productVisualWords {
+    font-size: clamp(86px, 6.6vw, 108px) !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .productPage .productVisualWords {
+    font-size: clamp(70px, 7vw, 90px) !important;
+    gap: 10px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisualWords {
+    font-size: clamp(52px, 14vw, 72px) !important;
+    gap: 8px !important;
+  }
+}
+
+
+/* ======================================================
+   PRODUCT POSTER TYPE — FIX CLIPPED "D" + MORE AIR
+====================================================== */
+
+/* Give the two poster lines more breathing room */
+.productPage .productVisualWords {
+  gap: 24px !important;
+
+  /* Less negative tracking so the letters do not feel stuck together */
+  letter-spacing: -0.055em !important;
+
+  /* Keep the text inside the left visual area */
+  overflow: visible !important;
+}
+
+/* BEAUTY keeps the full large size */
+.productPage .productVisualWords span:first-child {
+  font-size: 1em !important;
+  letter-spacing: -0.055em !important;
+}
+
+/* ENGINEERED is the longer word:
+   slightly compress its overall width instead of clipping the final D */
+.productPage .productVisualWords span:last-child {
+  font-size: 0.88em !important;
+  letter-spacing: -0.045em !important;
+
+  transform: scaleX(0.94) !important;
+  transform-origin: left center !important;
+
+  overflow: visible !important;
+}
+
+/* Make sure the left visual itself does not clip the last letter */
+.productPage .productVisual {
+  overflow: visible !important;
+}
+
+@media (max-width: 1400px) {
+  .productPage .productVisualWords {
+    gap: 20px !important;
+  }
+
+  .productPage .productVisualWords span:last-child {
+    font-size: 0.86em !important;
+    transform: scaleX(0.92) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisualWords {
+    gap: 14px !important;
+  }
+
+  .productPage .productVisualWords span:last-child {
+    font-size: 0.84em !important;
+    transform: scaleX(0.90) !important;
+  }
+}
+
+
+/* ======================================================
+   PRODUCT POSTER TYPE — FIX FINAL D CLIPPING
+====================================================== */
+
+/* Do not clip the poster type anywhere in the left visual hierarchy */
+.productPage .productMediaColumn,
+.productPage .productMedia,
+.productPage .productVisual,
+.productPage .productVisualWords {
+  overflow: visible !important;
+}
+
+/* Let the long word render at its real width.
+   We control fit with scaleX instead of clipping/max-width. */
+.productPage .productVisualWords span {
+  width: fit-content !important;
+  max-width: none !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+.productPage .productVisualWords span:last-child {
+  font-size: 0.88em !important;
+
+  transform: scaleX(0.90) !important;
+  transform-origin: left center !important;
+
+  width: fit-content !important;
+  max-width: none !important;
+
+  overflow: visible !important;
+
+  /* small right breathing room so the final D is never cut */
+  padding-right: 18px !important;
+}
+
+@media (max-width: 1400px) {
+  .productPage .productVisualWords span:last-child {
+    transform: scaleX(0.88) !important;
+    padding-right: 14px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .productPage .productVisualWords span:last-child {
+    transform: scaleX(0.86) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .productPage .productVisualWords span:last-child {
+    transform: scaleX(0.84) !important;
+    padding-right: 10px !important;
+  }
 }
