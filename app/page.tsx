@@ -443,7 +443,7 @@ export default function Home() {
           <nav className="heroNav">
             <a href="#home">HOME</a>
             <a href="#products">PRODUCT</a>
-            <a href="#technology">TECHNOLOGY</a>
+            <a href="#technology">EXPERIENCE</a>
             <a href="#about">ABOUT</a>
             <a href="#shop">SHOP</a>
           </nav>
@@ -482,7 +482,7 @@ export default function Home() {
             <nav className="sectionNav">
               <a href="#home">HOME</a>
               <a href="#products">PRODUCT</a>
-              <a href="#technology">TECHNOLOGY</a>
+              <a href="#technology">EXPERIENCE</a>
               <a href="#about">ABOUT</a>
               <a href="#shop">SHOP</a>
             </nav>
@@ -561,11 +561,11 @@ export default function Home() {
 
                   <div className="featureBody">
                     <h3>
-                      3-POLAR RF
+                      DEEP RF THERAPY
                     </h3>
 
                     <p>
-                      Deep Heating
+                      Precision Thermal Stimulation
                     </p>
                   </div>
                 </div>
@@ -748,7 +748,7 @@ export default function Home() {
             <nav className="sectionNav">
               <a href="#home">HOME</a>
               <a href="#products">PRODUCT</a>
-              <a href="#technology">TECHNOLOGY</a>
+              <a href="#technology">EXPERIENCE</a>
               <a href="#about">ABOUT</a>
               <a href="#shop">SHOP</a>
             </nav>
@@ -865,7 +865,7 @@ export default function Home() {
             <nav className="sectionNav">
               <a href="#home">HOME</a>
               <a href="#products">PRODUCT</a>
-              <a href="#technology">TECHNOLOGY</a>
+              <a href="#technology">EXPERIENCE</a>
               <a href="#about">ABOUT</a>
               <a href="#shop">SHOP</a>
             </nav>
@@ -948,7 +948,7 @@ export default function Home() {
             <nav className="sectionNav">
               <a href="#home">HOME</a>
               <a href="#products">PRODUCT</a>
-              <a href="#technology">TECHNOLOGY</a>
+              <a href="#technology">EXPERIENCE</a>
               <a href="#about">ABOUT</a>
               <a href="#shop">SHOP</a>
             </nav>
@@ -984,7 +984,7 @@ export default function Home() {
               </div>
 
               <div className="shopFeatureList">
-                <div><span>01</span><span>3-POLAR RF + EMS</span></div>
+                <div><span>01</span><span>DEEP RF THERAPY + EMS</span></div>
                 <div><span>02</span><span>EP INFUSION + NIR</span></div>
                 <div><span>03</span><span>nA SMART CURRENT CONTROL</span></div>
                 <div><span>04</span><span>LIGHT THERAPY + AI</span></div>
@@ -2296,6 +2296,86 @@ export default function Home() {
         @media (prefers-reduced-motion: reduce) {
           .techMotionScanner {
             animation-duration: 8s;
+          }
+        }
+
+        /* ==================================================
+           MOBILE ONLY: COMPACT TOP NAV
+           HOME | PRODUCT | TECHNOLOGY | ABOUT | SHOP
+           Desktop / tablet remain unchanged.
+        ================================================== */
+        @media (max-width: 700px) {
+          /* HERO: keep the complete navigation at the top-right. */
+          .heroNav {
+            top: 18px !important;
+            right: 12px !important;
+            bottom: auto !important;
+            left: auto !important;
+            width: auto !important;
+            max-width: calc(100vw - 24px) !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            gap: 0 !important;
+            font-size: 8px !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+          }
+
+          .heroNav a {
+            flex: 0 0 auto;
+            padding: 0 5px !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.55);
+            line-height: 1 !important;
+          }
+
+          .heroNav a:first-child {
+            padding-left: 0 !important;
+          }
+
+          .heroNav a:last-child {
+            padding-right: 0 !important;
+            border-right: 0;
+          }
+
+          /* PRODUCT / TECHNOLOGY / ABOUT / SHOP: same compact rule. */
+          .productHeader,
+          .contentSectionHeader {
+            gap: 8px !important;
+            min-width: 0 !important;
+          }
+
+          .sectionNav {
+            flex: 1 1 auto !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            margin-left: auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            gap: 0 !important;
+            font-size: 8px !important;
+            line-height: 1 !important;
+            letter-spacing: 0 !important;
+            white-space: nowrap !important;
+          }
+
+          .sectionNav a {
+            flex: 0 0 auto !important;
+            padding: 0 4px !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.55);
+            line-height: 1 !important;
+          }
+
+          .sectionNav a:first-child {
+            padding-left: 0 !important;
+          }
+
+          .sectionNav a:last-child {
+            padding-right: 0 !important;
+            border-right: 0;
           }
         }
 
