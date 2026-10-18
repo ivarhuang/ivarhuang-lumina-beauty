@@ -197,13 +197,6 @@ const shopGallery = [
     label: "V1",
     alt: "LUMINA Beauty Device video 01",
   },
-  {
-    type: "video",
-    src: "/shop-video-02.mp4",
-    poster: "/shop-video-02.png?v=5",
-    label: "V2",
-    alt: "LUMINA Beauty Device video 02",
-  },
 ] as const;
 
 export default function Home() {
