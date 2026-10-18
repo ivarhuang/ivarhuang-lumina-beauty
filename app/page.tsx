@@ -959,20 +959,20 @@ export default function Home() {
           <div className="shopLayout">
             <div className="shopVisual">
               <div className="shopVisualGlow" aria-hidden="true" />
-              <div className="shopVisualWord" aria-hidden="true">LUMINA</div>
+              <img
+                className="shopVisualLogo"
+                src="/L.svg"
+                alt=""
+                aria-hidden="true"
+              />
               <img
                 className="shopDeviceImage"
-                src="/product-tech.png"
+                src="/shop-product.PNG"
                 alt="LUMINA Beauty Device"
               />
             </div>
 
             <div className="shopPanel">
-              <div className="shopMeta">
-                <span>01 / LUMINA BEAUTY</span>
-                <span>BEAUTY TECHNOLOGY</span>
-              </div>
-
               <div className="shopCopy">
                 <p className="shopEyebrow">THE LUMINA SYSTEM</p>
                 <h2>LUMINA BEAUTY DEVICE</h2>
@@ -984,10 +984,25 @@ export default function Home() {
               </div>
 
               <div className="shopFeatureList">
-                <div><span>01</span><span>DEEP RF THERAPY + EMS</span></div>
-                <div><span>02</span><span>EP INFUSION + NIR</span></div>
-                <div><span>03</span><span>nA SMART CURRENT CONTROL</span></div>
-                <div><span>04</span><span>LIGHT THERAPY + AI</span></div>
+                <div className="shopFeatureRow">
+                  <strong>4 BUILT-IN TREATMENTS</strong>
+                  <span>Ready-to-use programs for everyday beauty care.</span>
+                </div>
+
+                <div className="shopFeatureRow">
+                  <strong>CUSTOM TREATMENTS VIA APP</strong>
+                  <span>Create routines tailored to your own preferences.</span>
+                </div>
+
+                <div className="shopFeatureRow">
+                  <strong>SAVE YOUR FAVORITES</strong>
+                  <span>Keep your preferred routines ready for quick access.</span>
+                </div>
+
+                <div className="shopFeatureRow">
+                  <strong>SHARE WITH THE COMMUNITY</strong>
+                  <span>Share routines and discover ideas from other LUMINA users.</span>
+                </div>
               </div>
 
               <div className="shopPurchase">
@@ -1822,11 +1837,11 @@ export default function Home() {
         .shopVisual {
           position: relative;
           min-height: 0;
-          overflow: hidden;
-          border: 1px solid rgba(13, 13, 18, 0.12);
-          border-radius: 22px;
-          background: rgba(255, 255, 255, 0.18);
-          backdrop-filter: blur(8px);
+          overflow: visible;
+          border: 0;
+          border-radius: 0;
+          background: transparent;
+          backdrop-filter: none;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1845,18 +1860,18 @@ export default function Home() {
           pointer-events: none;
         }
 
-        .shopVisualWord {
+        .shopVisualLogo {
           position: absolute;
-          left: 3%;
-          bottom: 1%;
+          left: 50%;
+          top: calc(50% + 25px);
           z-index: 1;
-          font-size: clamp(80px, 11vw, 210px);
-          font-weight: 500;
-          line-height: 0.8;
-          letter-spacing: -0.07em;
-          color: rgba(255,255,255,0.46);
+          width: min(86%, 780px);
+          height: auto;
+          display: block;
+          transform: translate(-48%, -50%);
+          opacity: 0.22;
           pointer-events: none;
-          white-space: nowrap;
+          user-select: none;
         }
 
         .shopDeviceImage {
@@ -1877,20 +1892,8 @@ export default function Home() {
           padding: 4px 0 2px;
         }
 
-        .shopMeta {
-          display: flex;
-          justify-content: space-between;
-          gap: 18px;
-          padding-bottom: 14px;
-          border-bottom: 1px solid rgba(12, 12, 16, 0.24);
-          font-size: 9px;
-          line-height: 1;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-        }
-
         .shopCopy {
-          padding: clamp(34px, 5vh, 62px) 0 26px;
+          padding: clamp(14px, 2.4vh, 28px) 0 28px;
         }
 
         .shopEyebrow {
@@ -1905,10 +1908,10 @@ export default function Home() {
         .shopCopy h2 {
           margin: 0;
           max-width: 620px;
-          font-size: clamp(40px, 4.2vw, 82px);
-          line-height: 0.88;
+          font-size: clamp(38px, 3.8vw, 72px);
+          line-height: 0.9;
           font-weight: 500;
-          letter-spacing: -0.065em;
+          letter-spacing: -0.055em;
         }
 
         .shopDescription {
@@ -1925,20 +1928,31 @@ export default function Home() {
           border-top: 1px solid rgba(12, 12, 16, 0.24);
         }
 
-        .shopFeatureList > div {
-          display: grid;
-          grid-template-columns: 34px 1fr;
-          gap: 12px;
-          padding: 12px 0;
-          border-bottom: 1px solid rgba(12, 12, 16, 0.18);
-          font-size: 12px;
-          line-height: 1.15;
-          letter-spacing: 0.01em;
+        .shopFeatureList {
+          border-top: 1px solid rgba(12, 12, 16, 0.22);
         }
 
-        .shopFeatureList > div span:first-child {
-          font-size: 9px;
-          opacity: 0.46;
+        .shopFeatureRow {
+          padding: 14px 0 13px;
+          border-bottom: 1px solid rgba(12, 12, 16, 0.18);
+          display: grid;
+          grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1fr);
+          gap: 24px;
+          align-items: baseline;
+        }
+
+        .shopFeatureRow strong {
+          font-size: 11px;
+          line-height: 1.15;
+          font-weight: 600;
+          letter-spacing: 0.03em;
+        }
+
+        .shopFeatureRow span {
+          font-size: 12.5px;
+          line-height: 1.5;
+          opacity: 0.72;
+          max-width: 380px;
         }
 
         .shopPurchase {
@@ -1946,7 +1960,7 @@ export default function Home() {
           grid-template-columns: 1fr auto;
           gap: 18px;
           align-items: end;
-          padding-top: 20px;
+          padding-top: 10px;
         }
 
         .shopPriceBlock {
@@ -2032,7 +2046,7 @@ export default function Home() {
 
           .shopVisual {
             min-height: 58vh;
-            border-radius: 16px;
+            border-radius: 0;
           }
 
           .shopDeviceImage {
@@ -2040,10 +2054,12 @@ export default function Home() {
             max-width: 90%;
           }
 
-          .shopVisualWord {
-            left: 2%;
-            bottom: 3%;
-            font-size: 24vw;
+          .shopVisualLogo {
+            left: 50%;
+            top: calc(50% + 20px);
+            width: 102%;
+            transform: translate(-48%, -50%);
+            opacity: 0.22;
           }
 
           .shopPanel {
@@ -2051,7 +2067,7 @@ export default function Home() {
           }
 
           .shopCopy {
-            padding: 30px 0 22px;
+            padding: 18px 0 24px;
           }
 
           .shopCopy h2 {
@@ -2061,6 +2077,23 @@ export default function Home() {
           .shopDescription {
             margin-top: 20px;
             font-size: 15px;
+          }
+
+          .shopFeatureRow {
+            grid-template-columns: 1fr;
+            gap: 6px;
+            padding: 16px 0 14px;
+          }
+
+          .shopFeatureRow strong {
+            font-size: 11px;
+          }
+
+          .shopFeatureRow span {
+            font-size: 13px;
+            line-height: 1.5;
+            opacity: 0.72;
+            max-width: none;
           }
 
           .shopPurchase {
