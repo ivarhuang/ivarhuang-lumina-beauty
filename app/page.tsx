@@ -400,7 +400,7 @@ export default function Home() {
             HERO
         ================================================== */}
 
-        <section className="hero">
+        <section id="home" className="hero">
           <video
             className="heroVideo"
             autoPlay
@@ -439,27 +439,12 @@ export default function Home() {
           </div>
 
           <nav className="heroNav">
-            <a href="#products">
-              PRODUCTS
-            </a>
-
-            <a href="#technology">
-              TECHNOLOGY
-            </a>
-
-            <a href="#about">
-              ABOUT
-            </a>
+            <a href="#home">HOME</a>
+            <a href="#products">PRODUCT</a>
+            <a href="#technology">TECHNOLOGY</a>
+            <a href="#about">ABOUT</a>
           </nav>
 
-          <div className="scrollText">
-            SCROLL
-          </div>
-
-          <div className="heroFooter">
-            <span>//</span>
-            <span>©2026</span>
-          </div>
         </section>
 
         {/* ==================================================
@@ -491,6 +476,12 @@ export default function Home() {
               <span className="brandBeautyText">BEAUTY</span>
             </div>
 
+            <nav className="sectionNav">
+              <a href="#home">HOME</a>
+              <a href="#products">PRODUCT</a>
+              <a href="#technology">TECHNOLOGY</a>
+              <a href="#about">ABOUT</a>
+            </nav>
           </div>
 
           {/* BIG TITLE */}
@@ -524,16 +515,6 @@ export default function Home() {
                   <span>BEAUTY</span>
                   <span>ENGINEERED</span>
                 </div>
-              </div>
-
-              <div className="productMediaCaption">
-                <span>
-                  ADVANCED BEAUTY SYSTEM
-                </span>
-
-                <span>
-                  LUMINA / 2026
-                </span>
               </div>
             </div>
 
@@ -728,35 +709,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              {/* BOTTOM DESCRIPTION */}
-
-              <div className="productStatement">
-                <span>
-                  BEAUTY
-                </span>
-
-                <span>
-                  TECHNOLOGY
-                </span>
-
-                <span>
-                  PERFORMANCE
-                </span>
-              </div>
             </div>
-          </div>
-
-          {/* FOOTER */}
-
-          <div className="productFooter">
-            <span>
-              ENGINEERED FOR VISIBLE RESULTS
-            </span>
-
-            <span>
-              ©2026 LUMINA BEAUTY
-            </span>
           </div>
         </section>
 
@@ -786,6 +739,13 @@ export default function Home() {
               </span>
               <span className="brandBeautyText">BEAUTY</span>
             </div>
+
+            <nav className="sectionNav">
+              <a href="#home">HOME</a>
+              <a href="#products">PRODUCT</a>
+              <a href="#technology">TECHNOLOGY</a>
+              <a href="#about">ABOUT</a>
+            </nav>
           </div>
 
           <div className="contentSectionPageTitle">
@@ -895,6 +855,13 @@ export default function Home() {
               </span>
               <span className="brandBeautyText">BEAUTY</span>
             </div>
+
+            <nav className="sectionNav">
+              <a href="#home">HOME</a>
+              <a href="#products">PRODUCT</a>
+              <a href="#technology">TECHNOLOGY</a>
+              <a href="#about">ABOUT</a>
+            </nav>
           </div>
 
           <div className="contentSectionPageTitle aboutFilmPageTitle">
@@ -945,16 +912,19 @@ export default function Home() {
           </div>
 
           <div className="aboutFilmFooter">
-            <span>
-              ADVANCED BEAUTY SYSTEM
-              <br />
-              ENGINEERED FOR VISIBLE RESULTS
-            </span>
+            <span>ADVANCED BEAUTY SYSTEM / ENGINEERED FOR VISIBLE RESULTS</span>
           </div>
         </section>
       </main>
 
       <style jsx>{`
+        .productHeader {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+        }
+
         .brandLockup {
           display: inline-flex;
           align-items: flex-end;
@@ -1014,6 +984,30 @@ export default function Home() {
           align-items: center;
           font-size: 12px;
           line-height: 1;
+        }
+
+        .sectionNav {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          margin-left: auto;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        .sectionNav a {
+          color: inherit;
+          text-decoration: none;
+          opacity: 0.9;
+          transition: opacity 0.2s ease;
+        }
+
+        .sectionNav a:hover {
+          opacity: 0.55;
         }
 
         .contentSectionBrand {
@@ -1428,7 +1422,20 @@ export default function Home() {
           }
         }
 
+        @media (max-width: 900px) {
+          .sectionNav {
+            gap: 18px;
+            font-size: 11px;
+          }
+        }
+
         @media (max-width: 700px) {
+          .sectionNav {
+            gap: 18px;
+            font-size: 11px;
+            letter-spacing: normal;
+          }
+
           .experienceMain {
             display: block;
           }
@@ -1784,7 +1791,9 @@ export default function Home() {
           z-index: 7;
           color: #ffffff;
           opacity: 0.5;
-          letter-spacing: -0.02em !important;
+          font-size: clamp(160px, 12vw, 232px) !important;
+          line-height: 0.78 !important;
+          letter-spacing: -0.01em !important;
           pointer-events: none;
           overflow: visible;
           white-space: nowrap;
@@ -1794,7 +1803,7 @@ export default function Home() {
 
         .aboutFilmVideoStage {
           position: relative;
-          top: clamp(42px, 6vh, 72px);
+          top: clamp(46px, 5.5vh, 72px);
           z-index: 3;
           width: 100%;
           aspect-ratio: 16 / 9;
@@ -1837,7 +1846,7 @@ export default function Home() {
 
           .aboutFilmVideoStage {
             width: 100%;
-            top: 34px;
+            top: 64px;
             border-radius: 14px;
           }
 
@@ -1847,7 +1856,8 @@ export default function Home() {
           }
 
           .aboutFilmHeroTitle {
-            letter-spacing: -0.015em !important;
+            font-size: clamp(104px, 12vw, 150px) !important;
+            letter-spacing: -0.008em !important;
           }
 
         }
@@ -1875,7 +1885,9 @@ export default function Home() {
           }
 
           .aboutFilmHeroTitle {
-            letter-spacing: -0.01em !important;
+            font-size: 24vw !important;
+            line-height: 0.8 !important;
+            letter-spacing: 0 !important;
           }
 
           .aboutFilmFooter {
