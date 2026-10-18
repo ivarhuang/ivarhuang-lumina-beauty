@@ -445,6 +445,7 @@ export default function Home() {
             <a href="#products">PRODUCT</a>
             <a href="#technology">TECHNOLOGY</a>
             <a href="#about">ABOUT</a>
+            <a href="#shop">SHOP</a>
           </nav>
 
         </section>
@@ -483,6 +484,7 @@ export default function Home() {
               <a href="#products">PRODUCT</a>
               <a href="#technology">TECHNOLOGY</a>
               <a href="#about">ABOUT</a>
+              <a href="#shop">SHOP</a>
             </nav>
           </div>
 
@@ -715,6 +717,7 @@ export default function Home() {
           </div>
         </section>
 
+
         {/* ==================================================
             TECHNOLOGY
         ================================================== */}
@@ -747,6 +750,7 @@ export default function Home() {
               <a href="#products">PRODUCT</a>
               <a href="#technology">TECHNOLOGY</a>
               <a href="#about">ABOUT</a>
+              <a href="#shop">SHOP</a>
             </nav>
           </div>
 
@@ -863,6 +867,7 @@ export default function Home() {
               <a href="#products">PRODUCT</a>
               <a href="#technology">TECHNOLOGY</a>
               <a href="#about">ABOUT</a>
+              <a href="#shop">SHOP</a>
             </nav>
           </div>
 
@@ -909,12 +914,97 @@ export default function Home() {
                 preload="auto"
                 disablePictureInPicture
                 aria-hidden="true"
+                style={{ opacity: 0.8 }}
               />
             </div>
           </div>
 
           <div className="aboutFilmFooter">
             <span>ADVANCED BEAUTY SYSTEM / ENGINEERED FOR VISIBLE RESULTS</span>
+          </div>
+        </section>
+
+        {/* ==================================================
+            SHOP
+        ================================================== */}
+
+        <section id="shop" className="section shopSection">
+          <div className="contentSectionHeader shopHeader">
+            <div className="contentSectionBrand brandLockup">
+              <span className="brandLuminaLogo" aria-label="LUMINA">
+                {introLetters.map((letter) => (
+                  <svg
+                    key={letter.name}
+                    viewBox={letter.viewBox}
+                    aria-hidden="true"
+                  >
+                    <path d={letter.path} fill="currentColor" />
+                  </svg>
+                ))}
+              </span>
+              <span className="brandBeautyText">BEAUTY</span>
+            </div>
+
+            <nav className="sectionNav">
+              <a href="#home">HOME</a>
+              <a href="#products">PRODUCT</a>
+              <a href="#technology">TECHNOLOGY</a>
+              <a href="#about">ABOUT</a>
+              <a href="#shop">SHOP</a>
+            </nav>
+          </div>
+
+          <div className="shopPageTitle">SHOP</div>
+
+          <div className="shopLayout">
+            <div className="shopVisual">
+              <div className="shopVisualGlow" aria-hidden="true" />
+              <div className="shopVisualWord" aria-hidden="true">LUMINA</div>
+              <img
+                className="shopDeviceImage"
+                src="/product-tech.png"
+                alt="LUMINA Beauty Device"
+              />
+            </div>
+
+            <div className="shopPanel">
+              <div className="shopMeta">
+                <span>01 / LUMINA BEAUTY</span>
+                <span>BEAUTY TECHNOLOGY</span>
+              </div>
+
+              <div className="shopCopy">
+                <p className="shopEyebrow">THE LUMINA SYSTEM</p>
+                <h2>LUMINA BEAUTY DEVICE</h2>
+                <p className="shopDescription">
+                  Intelligent beauty technology designed for a more personal
+                  daily ritual — combining RF, EMS, EP, NIR, light therapy,
+                  smart current control and adaptive treatment in one system.
+                </p>
+              </div>
+
+              <div className="shopFeatureList">
+                <div><span>01</span><span>3-POLAR RF + EMS</span></div>
+                <div><span>02</span><span>EP INFUSION + NIR</span></div>
+                <div><span>03</span><span>nA SMART CURRENT CONTROL</span></div>
+                <div><span>04</span><span>LIGHT THERAPY + AI</span></div>
+              </div>
+
+              <div className="shopPurchase">
+                <div className="shopPriceBlock">
+                  <span>LAUNCH EDITION</span>
+                  <strong>PRICE — TBA</strong>
+                </div>
+
+                <button className="shopButton" type="button">
+                  ADD TO BAG
+                </button>
+              </div>
+
+              <p className="shopCheckoutNote">
+                ONLINE CHECKOUT / COMING SOON
+              </p>
+            </div>
           </div>
         </section>
       </main>
@@ -1683,6 +1773,310 @@ export default function Home() {
         }
 
 
+
+        /* ==================================================
+           SHOP
+           Scoped styles only — Product / Experience / About stay unchanged
+        ================================================== */
+
+        .shopSection {
+          position: relative;
+          min-height: 100vh;
+          overflow: hidden;
+          justify-content: flex-start;
+          padding: 20px 22px 28px;
+          color: #0b0b0d;
+          background:
+            radial-gradient(circle at 18% 20%, rgba(121, 235, 239, 0.66) 0%, rgba(121, 235, 239, 0.14) 24%, rgba(121, 235, 239, 0) 46%),
+            radial-gradient(circle at 74% 24%, rgba(213, 180, 255, 0.68) 0%, rgba(213, 180, 255, 0.16) 25%, rgba(213, 180, 255, 0) 48%),
+            radial-gradient(circle at 76% 82%, rgba(255, 149, 176, 0.52) 0%, rgba(255, 149, 176, 0.12) 26%, rgba(255, 149, 176, 0) 50%),
+            linear-gradient(135deg, #e8fbfb 0%, #eee5ff 48%, #ffdce6 100%);
+        }
+
+        .shopHeader {
+          position: relative;
+          z-index: 10;
+        }
+
+        .shopPageTitle {
+          position: relative;
+          z-index: 5;
+          margin: 22px 0 20px;
+          font-size: clamp(50px, 4.7vw, 90px);
+          line-height: 0.9;
+          font-weight: 400;
+          letter-spacing: -0.065em;
+        }
+
+        .shopLayout {
+          position: relative;
+          z-index: 2;
+          flex: 1;
+          min-height: 0;
+          display: grid;
+          grid-template-columns: minmax(0, 1.18fr) minmax(390px, 0.82fr);
+          gap: clamp(34px, 5vw, 84px);
+          align-items: stretch;
+        }
+
+        .shopVisual {
+          position: relative;
+          min-height: 0;
+          overflow: hidden;
+          border: 1px solid rgba(13, 13, 18, 0.12);
+          border-radius: 22px;
+          background: rgba(255, 255, 255, 0.18);
+          backdrop-filter: blur(8px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .shopVisualGlow {
+          position: absolute;
+          left: 50%;
+          top: 48%;
+          width: 74%;
+          aspect-ratio: 1 / 1;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.30) 34%, rgba(255,255,255,0) 72%);
+          filter: blur(12px);
+          pointer-events: none;
+        }
+
+        .shopVisualWord {
+          position: absolute;
+          left: 3%;
+          bottom: 1%;
+          z-index: 1;
+          font-size: clamp(80px, 11vw, 210px);
+          font-weight: 500;
+          line-height: 0.8;
+          letter-spacing: -0.07em;
+          color: rgba(255,255,255,0.46);
+          pointer-events: none;
+          white-space: nowrap;
+        }
+
+        .shopDeviceImage {
+          position: relative;
+          z-index: 3;
+          display: block;
+          width: auto;
+          height: min(72vh, 700px);
+          max-width: 82%;
+          object-fit: contain;
+          filter: drop-shadow(0 34px 34px rgba(55, 36, 75, 0.18));
+        }
+
+        .shopPanel {
+          min-height: 0;
+          display: flex;
+          flex-direction: column;
+          padding: 4px 0 2px;
+        }
+
+        .shopMeta {
+          display: flex;
+          justify-content: space-between;
+          gap: 18px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid rgba(12, 12, 16, 0.24);
+          font-size: 9px;
+          line-height: 1;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .shopCopy {
+          padding: clamp(34px, 5vh, 62px) 0 26px;
+        }
+
+        .shopEyebrow {
+          margin: 0 0 16px;
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+        }
+
+        .shopCopy h2 {
+          margin: 0;
+          max-width: 620px;
+          font-size: clamp(40px, 4.2vw, 82px);
+          line-height: 0.88;
+          font-weight: 500;
+          letter-spacing: -0.065em;
+        }
+
+        .shopDescription {
+          max-width: 520px;
+          margin: 28px 0 0;
+          font-size: clamp(14px, 0.95vw, 17px);
+          line-height: 1.5;
+          letter-spacing: -0.015em;
+          opacity: 0.7;
+        }
+
+        .shopFeatureList {
+          margin-top: auto;
+          border-top: 1px solid rgba(12, 12, 16, 0.24);
+        }
+
+        .shopFeatureList > div {
+          display: grid;
+          grid-template-columns: 34px 1fr;
+          gap: 12px;
+          padding: 12px 0;
+          border-bottom: 1px solid rgba(12, 12, 16, 0.18);
+          font-size: 12px;
+          line-height: 1.15;
+          letter-spacing: 0.01em;
+        }
+
+        .shopFeatureList > div span:first-child {
+          font-size: 9px;
+          opacity: 0.46;
+        }
+
+        .shopPurchase {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 18px;
+          align-items: end;
+          padding-top: 20px;
+        }
+
+        .shopPriceBlock {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .shopPriceBlock span {
+          font-size: 9px;
+          line-height: 1;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          opacity: 0.58;
+        }
+
+        .shopPriceBlock strong {
+          font-size: clamp(20px, 1.6vw, 30px);
+          line-height: 1;
+          font-weight: 500;
+          letter-spacing: -0.035em;
+        }
+
+        .shopButton {
+          min-width: 180px;
+          height: 52px;
+          padding: 0 28px;
+          border: 1px solid #0a0a0d;
+          border-radius: 999px;
+          background: #0a0a0d;
+          color: #ffffff;
+          font: inherit;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          cursor: pointer;
+          transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .shopButton:hover {
+          transform: translateY(-2px);
+          background: transparent;
+          color: #0a0a0d;
+        }
+
+        .shopCheckoutNote {
+          margin: 12px 0 0;
+          text-align: right;
+          font-size: 8px;
+          line-height: 1;
+          letter-spacing: 0.14em;
+          opacity: 0.48;
+        }
+
+        @media (max-width: 1100px) {
+          .shopSection {
+            min-height: auto;
+          }
+
+          .shopLayout {
+            grid-template-columns: minmax(0, 1fr) minmax(330px, 0.82fr);
+            gap: 32px;
+          }
+
+          .shopDeviceImage {
+            height: min(58vh, 560px);
+          }
+        }
+
+        @media (max-width: 700px) {
+          .shopSection {
+            padding: 14px 12px 34px;
+          }
+
+          .shopPageTitle {
+            margin: 28px 0;
+            font-size: 16vw;
+          }
+
+          .shopLayout {
+            display: block;
+          }
+
+          .shopVisual {
+            min-height: 58vh;
+            border-radius: 16px;
+          }
+
+          .shopDeviceImage {
+            height: 52vh;
+            max-width: 90%;
+          }
+
+          .shopVisualWord {
+            left: 2%;
+            bottom: 3%;
+            font-size: 24vw;
+          }
+
+          .shopPanel {
+            padding-top: 32px;
+          }
+
+          .shopCopy {
+            padding: 30px 0 22px;
+          }
+
+          .shopCopy h2 {
+            font-size: 13vw;
+          }
+
+          .shopDescription {
+            margin-top: 20px;
+            font-size: 15px;
+          }
+
+          .shopPurchase {
+            grid-template-columns: 1fr;
+            align-items: stretch;
+          }
+
+          .shopButton {
+            width: 100%;
+          }
+
+          .shopCheckoutNote {
+            text-align: left;
+          }
+        }
+
         /* ==================================================
            ABOUT / BRAND FILM
            Scoped styles only — does not affect Hero/Product/Experience
@@ -1812,7 +2206,7 @@ export default function Home() {
           align-self: center;
           overflow: hidden;
           border-radius: 18px;
-          background: #000000;
+          background: transparent;
           box-shadow: 0 26px 70px rgba(16, 10, 30, 0.18);
         }
 
@@ -1822,7 +2216,8 @@ export default function Home() {
           height: 100%;
           object-fit: cover;
           object-position: center;
-          background: #000000;
+          background: transparent;
+          mix-blend-mode: normal !important;
           pointer-events: none;
           user-select: none;
         }
