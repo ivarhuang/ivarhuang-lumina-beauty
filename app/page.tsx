@@ -967,7 +967,7 @@ export default function Home() {
               />
               <img
                 className="shopDeviceImage"
-                src="/shop-product.PNG"
+                src="/shop-product.png"
                 alt="LUMINA Beauty Device"
               />
             </div>
