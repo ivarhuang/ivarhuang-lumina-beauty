@@ -193,14 +193,14 @@ const shopGallery = [
   {
     type: "video",
     src: "/shop-video-01.mp4",
-    poster: "/shop-video-01.png?v=4",
+    poster: "/shop-video-01.png?v=5",
     label: "V1",
     alt: "LUMINA Beauty Device video 01",
   },
   {
     type: "video",
     src: "/shop-video-02.mp4",
-    poster: "/shop-video-02.png?v=4",
+    poster: "/shop-video-02.png?v=5",
     label: "V2",
     alt: "LUMINA Beauty Device video 02",
   },
@@ -1094,9 +1094,10 @@ export default function Home() {
                           <img src={item.src} alt="" aria-hidden="true" />
                         ) : (
                           <img
-                            src={"poster" in item ? item.poster : item.src}
+                            src={item.poster}
                             alt=""
                             aria-hidden="true"
+                            data-video-thumbnail="true"
                           />
                         )}
                       </span>
