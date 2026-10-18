@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 /* ======================================================
@@ -134,6 +134,76 @@ const introLetters = [
   },
 ];
 
+
+const shopGallery = [
+  {
+    type: "image",
+    src: "/shop-01.png",
+    label: "01",
+    alt: "LUMINA Beauty Device view 01",
+  },
+  {
+    type: "image",
+    src: "/shop-02.png",
+    label: "02",
+    alt: "LUMINA Beauty Device view 02",
+  },
+  {
+    type: "image",
+    src: "/shop-03.png",
+    label: "03",
+    alt: "LUMINA Beauty Device view 03",
+  },
+  {
+    type: "image",
+    src: "/shop-04.png",
+    label: "04",
+    alt: "LUMINA Beauty Device view 04",
+  },
+  {
+    type: "image",
+    src: "/shop-05.png",
+    label: "05",
+    alt: "LUMINA Beauty Device view 05",
+  },
+  {
+    type: "image",
+    src: "/shop-06.png",
+    label: "06",
+    alt: "LUMINA Beauty Device view 06",
+  },
+  {
+    type: "image",
+    src: "/shop-07.png",
+    label: "07",
+    alt: "LUMINA Beauty Device view 07",
+  },
+  {
+    type: "image",
+    src: "/shop-08.png",
+    label: "08",
+    alt: "LUMINA Beauty Device view 08",
+  },
+  {
+    type: "image",
+    src: "/shop-09.png",
+    label: "09",
+    alt: "LUMINA Beauty Device view 09",
+  },
+  {
+    type: "video",
+    src: "/shop-video-01.mp4",
+    label: "V1",
+    alt: "LUMINA Beauty Device video 01",
+  },
+  {
+    type: "video",
+    src: "/shop-video-02.mp4",
+    label: "V2",
+    alt: "LUMINA Beauty Device video 02",
+  },
+] as const;
+
 export default function Home() {
   const introScreenRef = useRef<HTMLDivElement | null>(null);
   const introLettersRef = useRef<HTMLDivElement | null>(null);
@@ -145,6 +215,21 @@ export default function Home() {
   const phaseRef = useRef(0);
   const animatingRef = useRef(false);
   const introDoneRef = useRef(false);
+
+  const [shopMediaIndex, setShopMediaIndex] = useState(0);
+  const shopThumbRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const selectShopMedia = (index: number) => {
+    setShopMediaIndex(index);
+
+    window.requestAnimationFrame(() => {
+      shopThumbRefs.current[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    });
+  };
 
   useEffect(() => {
     const introScreen = introScreenRef.current;
@@ -958,18 +1043,63 @@ export default function Home() {
 
           <div className="shopLayout">
             <div className="shopVisual">
-              <div className="shopVisualGlow" aria-hidden="true" />
-              <img
-                className="shopVisualLogo"
-                src="/L.svg"
-                alt=""
-                aria-hidden="true"
-              />
-              <img
-                className="shopDeviceImage"
-                src="/shop-product.png"
-                alt="LUMINA Beauty Device"
-              />
+              <div className="shopMediaStage">
+                {shopGallery[shopMediaIndex].type === "image" ? (
+                  <img
+                    key={shopGallery[shopMediaIndex].src}
+                    className="shopGalleryMainMedia"
+                    src={shopGallery[shopMediaIndex].src}
+                    alt={shopGallery[shopMediaIndex].alt}
+                  />
+                ) : (
+                  <video
+                    key={shopGallery[shopMediaIndex].src}
+                    className="shopGalleryMainMedia"
+                    src={shopGallery[shopMediaIndex].src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={shopGallery[shopMediaIndex].alt}
+                  />
+                )}
+              </div>
+
+              <div className="shopThumbViewport" aria-label="Product media gallery">
+                <div className="shopThumbTrack">
+                  {shopGallery.map((item, index) => (
+                    <button
+                      key={`${item.src}-${index}`}
+                      ref={(node) => {
+                        shopThumbRefs.current[index] = node;
+                      }}
+                      className={`shopThumb ${
+                        shopMediaIndex === index ? "shopThumbActive" : ""
+                      }`}
+                      type="button"
+                      onClick={() => selectShopMedia(index)}
+                      aria-label={`Show ${item.label}`}
+                      aria-pressed={shopMediaIndex === index}
+                    >
+                      <span className="shopThumbMedia">
+                        {item.type === "image" ? (
+                          <img src={item.src} alt="" aria-hidden="true" />
+                        ) : (
+                          <video
+                            src={item.src}
+                            muted
+                            playsInline
+                            preload="metadata"
+                            aria-hidden="true"
+                          />
+                        )}
+                      </span>
+                      <span className="shopThumbLabel">{item.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="shopPanel">
@@ -1020,6 +1150,89 @@ export default function Home() {
                 ONLINE CHECKOUT / COMING SOON
               </p>
             </div>
+          </div>
+        </section>
+
+        <section className="recommendedSection" aria-labelledby="recommended-title">
+          <div className="recommendedHeader">
+            <div>
+              <p className="recommendedEyebrow">RECOMMENDED FOR YOU</p>
+              <h2 id="recommended-title">COMPLETE YOUR RITUAL</h2>
+            </div>
+
+            <a className="recommendedViewAll" href="#shop">
+              VIEW ALL
+            </a>
+          </div>
+
+          <div className="recommendedGrid">
+            <article className="recommendedCard">
+              <div className="recommendedVisual">
+                <div className="recommendedBottle recommendedTube">
+                  <span>LUMINA</span>
+                </div>
+              </div>
+              <div className="recommendedInfo">
+                <span className="recommendedType">STEP 01</span>
+                <h3>CLEANSER</h3>
+                <p>Gentle daily cleansing before your beauty routine.</p>
+                <div className="recommendedBottom">
+                  <strong>PRICE — TBA</strong>
+                  <button type="button">VIEW</button>
+                </div>
+              </div>
+            </article>
+
+            <article className="recommendedCard">
+              <div className="recommendedVisual">
+                <div className="recommendedBottle recommendedSerum">
+                  <span>LUMINA</span>
+                </div>
+              </div>
+              <div className="recommendedInfo">
+                <span className="recommendedType">STEP 02</span>
+                <h3>SERUM</h3>
+                <p>Lightweight skincare designed for your daily ritual.</p>
+                <div className="recommendedBottom">
+                  <strong>PRICE — TBA</strong>
+                  <button type="button">VIEW</button>
+                </div>
+              </div>
+            </article>
+
+            <article className="recommendedCard">
+              <div className="recommendedVisual">
+                <div className="recommendedBottle recommendedLotion">
+                  <span>LUMINA</span>
+                </div>
+              </div>
+              <div className="recommendedInfo">
+                <span className="recommendedType">STEP 03</span>
+                <h3>LOTION</h3>
+                <p>Daily hydration to keep skin feeling soft and comfortable.</p>
+                <div className="recommendedBottom">
+                  <strong>PRICE — TBA</strong>
+                  <button type="button">VIEW</button>
+                </div>
+              </div>
+            </article>
+
+            <article className="recommendedCard">
+              <div className="recommendedVisual">
+                <div className="recommendedBottle recommendedCream">
+                  <span>LUMINA</span>
+                </div>
+              </div>
+              <div className="recommendedInfo">
+                <span className="recommendedType">STEP 04</span>
+                <h3>MOISTURE CREAM</h3>
+                <p>Finish your routine with lasting moisture and comfort.</p>
+                <div className="recommendedBottom">
+                  <strong>PRICE — TBA</strong>
+                  <button type="button">VIEW</button>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
       </main>
@@ -1836,53 +2049,107 @@ export default function Home() {
 
         .shopVisual {
           position: relative;
+          min-width: 0;
           min-height: 0;
-          overflow: visible;
-          border: 0;
-          border-radius: 0;
-          background: transparent;
-          backdrop-filter: none;
+          display: grid;
+          grid-template-rows: minmax(0, 1fr) auto;
+          gap: 14px;
+        }
+
+        .shopMediaStage {
+          position: relative;
+          min-height: 0;
+          overflow: hidden;
+          aspect-ratio: 3 / 2;
+          background: rgba(255,255,255,0.16);
+        }
+
+        .shopGalleryMainMedia {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: center;
+          background: #000;
+        }
+
+        .shopThumbViewport {
+          width: min(100%, 650px);
+          margin: 0 auto;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          overscroll-behavior-inline: contain;
+        }
+
+        .shopThumbViewport::-webkit-scrollbar {
+          display: none;
+        }
+
+        .shopThumbTrack {
+          width: max-content;
           display: flex;
           align-items: center;
-          justify-content: center;
+          gap: 10px;
+          padding-inline: calc(325px - 48px);
         }
 
-        .shopVisualGlow {
-          position: absolute;
-          left: 50%;
-          top: 48%;
-          width: 74%;
-          aspect-ratio: 1 / 1;
-          transform: translate(-50%, -50%);
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.30) 34%, rgba(255,255,255,0) 72%);
-          filter: blur(12px);
-          pointer-events: none;
+        .shopThumb {
+          flex: 0 0 96px;
+          width: 96px;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          color: #0b0b0d;
+          cursor: pointer;
+          scroll-snap-align: center;
+          opacity: 0.48;
+          transform: scale(0.92);
+          transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
         }
 
-        .shopVisualLogo {
-          position: absolute;
-          left: 50%;
-          top: calc(50% + 25px);
-          z-index: 1;
-          width: min(86%, 780px);
-          height: auto;
-          display: block;
-          transform: translate(-48%, -50%);
-          opacity: 0.22;
-          pointer-events: none;
-          user-select: none;
+        .shopThumb:hover {
+          opacity: 0.78;
         }
 
-        .shopDeviceImage {
+        .shopThumbActive {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        .shopThumbMedia {
           position: relative;
-          z-index: 3;
           display: block;
-          width: auto;
-          height: min(72vh, 700px);
-          max-width: 82%;
-          object-fit: contain;
-          filter: drop-shadow(0 34px 34px rgba(55, 36, 75, 0.18));
+          width: 96px;
+          aspect-ratio: 3 / 2;
+          overflow: hidden;
+          border: 1px solid rgba(10,10,13,0.18);
+          background: rgba(255,255,255,0.28);
+        }
+
+        .shopThumbActive .shopThumbMedia {
+          border-color: rgba(10,10,13,0.72);
+        }
+
+        .shopThumbMedia img,
+        .shopThumbMedia video {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .shopThumbLabel {
+          display: block;
+          margin-top: 6px;
+          font-size: 8px;
+          line-height: 1;
+          letter-spacing: 0.1em;
+          text-align: center;
         }
 
         .shopPanel {
@@ -2025,8 +2292,12 @@ export default function Home() {
             gap: 32px;
           }
 
-          .shopDeviceImage {
-            height: min(58vh, 560px);
+          .shopThumbViewport {
+            width: min(100%, 520px);
+          }
+
+          .shopThumbTrack {
+            padding-inline: calc(260px - 48px);
           }
         }
 
@@ -2045,21 +2316,37 @@ export default function Home() {
           }
 
           .shopVisual {
-            min-height: 58vh;
-            border-radius: 0;
+            min-height: 0;
+            gap: 12px;
           }
 
-          .shopDeviceImage {
-            height: 52vh;
-            max-width: 90%;
+          .shopMediaStage {
+            width: 100%;
+            min-height: 0;
+            aspect-ratio: 3 / 2;
           }
 
-          .shopVisualLogo {
-            left: 50%;
-            top: calc(50% + 20px);
-            width: 102%;
-            transform: translate(-48%, -50%);
-            opacity: 0.22;
+          .shopThumbViewport {
+            width: 100%;
+          }
+
+          .shopThumbTrack {
+            gap: 8px;
+            padding-inline: calc(50vw - 41px);
+          }
+
+          .shopThumb {
+            flex-basis: 82px;
+            width: 82px;
+          }
+
+          .shopThumbMedia {
+            width: 82px;
+            aspect-ratio: 3 / 2;
+          }
+
+          .shopThumbLabel {
+            font-size: 7px;
           }
 
           .shopPanel {
@@ -2107,6 +2394,261 @@ export default function Home() {
 
           .shopCheckoutNote {
             text-align: left;
+          }
+        }
+
+
+        /* ==================================================
+           SHOP — RECOMMENDED PRODUCTS
+        ================================================== */
+
+        .recommendedSection {
+          position: relative;
+          padding: 54px 22px 68px;
+          color: #0b0b0d;
+          background:
+            radial-gradient(circle at 10% 14%, rgba(121,235,239,0.30) 0%, rgba(121,235,239,0) 34%),
+            radial-gradient(circle at 88% 18%, rgba(213,180,255,0.34) 0%, rgba(213,180,255,0) 38%),
+            radial-gradient(circle at 72% 86%, rgba(255,149,176,0.22) 0%, rgba(255,149,176,0) 36%),
+            linear-gradient(135deg, #f6ffff 0%, #f3edff 50%, #fff0f5 100%);
+        }
+
+        .recommendedHeader {
+          display: flex;
+          align-items: end;
+          justify-content: space-between;
+          gap: 24px;
+          margin-bottom: 28px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid rgba(10,10,13,0.18);
+        }
+
+        .recommendedEyebrow {
+          margin: 0 0 8px;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1;
+          letter-spacing: 0.18em;
+        }
+
+        .recommendedHeader h2 {
+          margin: 0;
+          font-size: clamp(34px, 4vw, 70px);
+          font-weight: 400;
+          line-height: 0.9;
+          letter-spacing: -0.055em;
+        }
+
+        .recommendedViewAll {
+          padding-bottom: 4px;
+          border-bottom: 1px solid currentColor;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+        }
+
+        .recommendedGrid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 12px;
+        }
+
+        .recommendedCard {
+          min-width: 0;
+          border: 1px solid rgba(10,10,13,0.12);
+          background: rgba(255,255,255,0.22);
+          backdrop-filter: blur(10px);
+          overflow: hidden;
+        }
+
+        .recommendedVisual {
+          min-height: 260px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background:
+            radial-gradient(circle at 50% 40%, rgba(255,255,255,0.82), rgba(255,255,255,0.12) 42%, rgba(255,255,255,0) 68%);
+        }
+
+        .recommendedBottle {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #111;
+          background: linear-gradient(180deg, #fffdf9 0%, #f2ece8 100%);
+          box-shadow:
+            0 22px 28px rgba(62,45,74,0.12),
+            inset 0 0 0 1px rgba(20,20,20,0.10);
+        }
+
+        .recommendedBottle span {
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+        }
+
+        .recommendedTube {
+          width: 92px;
+          height: 180px;
+          border-radius: 10px 10px 22px 22px;
+        }
+
+        .recommendedTube::after {
+          content: "";
+          position: absolute;
+          left: 12px;
+          right: 12px;
+          bottom: -14px;
+          height: 18px;
+          border-radius: 2px;
+          background: linear-gradient(180deg, #f4f4f4, #bdbdbd);
+          box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12);
+        }
+
+        .recommendedSerum {
+          width: 74px;
+          height: 150px;
+          border-radius: 8px 8px 14px 14px;
+        }
+
+        .recommendedSerum::before {
+          content: "";
+          position: absolute;
+          top: -44px;
+          width: 48px;
+          height: 48px;
+          border-radius: 8px 8px 2px 2px;
+          background: linear-gradient(90deg, #bfc0c3, #fafafa 48%, #999b9f);
+        }
+
+        .recommendedLotion {
+          width: 78px;
+          height: 174px;
+          border-radius: 10px 10px 16px 16px;
+        }
+
+        .recommendedLotion::before {
+          content: "";
+          position: absolute;
+          top: -22px;
+          width: 62px;
+          height: 26px;
+          border-radius: 5px 5px 2px 2px;
+          background: linear-gradient(90deg, #bbb, #f8f8f8 50%, #999);
+        }
+
+        .recommendedCream {
+          width: 122px;
+          height: 82px;
+          border-radius: 12px 12px 20px 20px;
+        }
+
+        .recommendedCream::before {
+          content: "";
+          position: absolute;
+          top: -24px;
+          width: 126px;
+          height: 30px;
+          border-radius: 10px 10px 4px 4px;
+          background: linear-gradient(90deg, #aaa, #f8f8f8 50%, #888);
+        }
+
+        .recommendedInfo {
+          padding: 18px 18px 16px;
+          border-top: 1px solid rgba(10,10,13,0.10);
+        }
+
+        .recommendedType {
+          display: block;
+          margin-bottom: 8px;
+          font-size: 8px;
+          letter-spacing: 0.14em;
+          opacity: 0.48;
+        }
+
+        .recommendedInfo h3 {
+          margin: 0;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1;
+          letter-spacing: -0.025em;
+        }
+
+        .recommendedInfo p {
+          min-height: 38px;
+          margin: 12px 0 18px;
+          font-size: 11px;
+          line-height: 1.45;
+          opacity: 0.62;
+        }
+
+        .recommendedBottom {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          padding-top: 12px;
+          border-top: 1px solid rgba(10,10,13,0.14);
+        }
+
+        .recommendedBottom strong {
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+        }
+
+        .recommendedBottom button {
+          padding: 0;
+          border: 0;
+          background: transparent;
+          color: inherit;
+          font: inherit;
+          font-size: 9px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+          .recommendedGrid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 700px) {
+          .recommendedSection {
+            padding: 42px 12px 50px;
+          }
+
+          .recommendedHeader {
+            align-items: flex-start;
+          }
+
+          .recommendedHeader h2 {
+            font-size: 12vw;
+          }
+
+          .recommendedGrid {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            padding-bottom: 4px;
+          }
+
+          .recommendedGrid::-webkit-scrollbar {
+            display: none;
+          }
+
+          .recommendedCard {
+            flex: 0 0 78vw;
+            scroll-snap-align: start;
+          }
+
+          .recommendedVisual {
+            min-height: 230px;
           }
         }
 
