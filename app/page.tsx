@@ -875,9 +875,9 @@ export default function Home() {
 
         <section
           id="about"
-          className="section sectionLight contentSection contentSectionAbout"
+          className="section contentSection contentSectionAbout aboutFilmSection"
         >
-          <div className="contentSectionHeader">
+          <div className="contentSectionHeader aboutFilmHeader">
             <div className="contentSectionBrand brandLockup">
               <span className="brandLuminaLogo" aria-label="LUMINA">
                 {introLetters.map((letter) => (
@@ -897,15 +897,60 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="contentSectionPageTitle">
-            About
+          <div className="contentSectionPageTitle aboutFilmPageTitle">
+            ABOUT
           </div>
 
-          <h2 className="contentSectionHeroTitle">
-            LUMINA
-            <br />
-            BEAUTY.
-          </h2>
+          <div className="aboutPurpose">
+            <div className="aboutPurposeLabel">OUR PURPOSE</div>
+
+            <h3 className="aboutPurposeTitle">
+              Beauty powered
+              <br />
+              by a brighter you.
+            </h3>
+
+            <p className="aboutPurposeText">
+              At LUMINA BEAUTY, we create intelligent
+              beauty technology that helps you look, feel,
+              and glow like your most radiant self.
+            </p>
+          </div>
+
+          <div className="experienceMain aboutFilmMain">
+            <div className="experienceIntro aboutFilmCopy">
+              <h2
+                className="contentSectionHeroTitle experienceHeroTitle aboutFilmHeroTitle"
+                aria-label="LUMINA BEAUTY"
+              >
+                LUMINA
+                <br />
+                BEAUTY
+              </h2>
+            </div>
+
+            <div className="aboutFilmVideoStage">
+              <video
+                className="aboutFilmVideo"
+                src="/about.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                disablePictureInPicture
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+
+          <div className="aboutFilmFooter">
+            <span>
+              ADVANCED BEAUTY SYSTEM
+              <br />
+              ENGINEERED FOR VISIBLE RESULTS
+            </span>
+          </div>
         </section>
       </main>
 
@@ -1625,6 +1670,217 @@ export default function Home() {
             height: 28px;
             left: -72px;
             animation-duration: 2.8s;
+          }
+        }
+
+
+        /* ==================================================
+           ABOUT / BRAND FILM
+           Scoped styles only — does not affect Hero/Product/Experience
+        ================================================== */
+
+        .aboutFilmSection {
+          position: relative;
+          min-height: 100vh;
+          overflow: hidden;
+          color: #ffffff;
+          background:
+            radial-gradient(
+              circle at 16% 20%,
+              rgba(118, 242, 235, 0.82) 0%,
+              rgba(118, 242, 235, 0.18) 20%,
+              rgba(118, 242, 235, 0) 42%
+            ),
+            radial-gradient(
+              circle at 50% 18%,
+              rgba(215, 173, 255, 0.88) 0%,
+              rgba(215, 173, 255, 0.18) 24%,
+              rgba(215, 173, 255, 0) 44%
+            ),
+            radial-gradient(
+              circle at 36% 70%,
+              rgba(255, 185, 118, 0.86) 0%,
+              rgba(255, 185, 118, 0.18) 24%,
+              rgba(255, 185, 118, 0) 46%
+            ),
+            radial-gradient(
+              circle at 84% 72%,
+              rgba(255, 103, 133, 0.78) 0%,
+              rgba(255, 103, 133, 0.22) 22%,
+              rgba(255, 103, 133, 0) 44%
+            ),
+            linear-gradient(
+              135deg,
+              #9ddff2 0%,
+              #b59bff 38%,
+              #ff8fb1 68%,
+              #ff9a5a 100%
+            );
+        }
+
+        .aboutFilmSection .brandLockup {
+          color: #ffffff;
+        }
+
+        .aboutFilmHeader {
+          position: relative;
+          z-index: 5;
+        }
+
+        .aboutFilmPageTitle {
+          position: relative;
+          z-index: 5;
+          color: #ffffff;
+        }
+
+        .aboutFilmMain {
+          position: relative;
+          z-index: 2;
+        }
+
+        .aboutPurpose {
+          position: absolute;
+          left: 22px;
+          top: clamp(185px, 22vh, 235px);
+          z-index: 8;
+          width: min(390px, 32vw);
+          color: #ffffff;
+        }
+
+        .aboutPurposeLabel {
+          margin-bottom: 16px;
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 600;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+        }
+
+        .aboutPurposeTitle {
+          margin: 0 0 18px;
+          font-size: clamp(26px, 2vw, 38px);
+          line-height: 1.05;
+          font-weight: 400;
+          letter-spacing: -0.035em;
+        }
+
+        .aboutPurposeText {
+          margin: 0;
+          max-width: 360px;
+          font-size: clamp(13px, 0.9vw, 16px);
+          line-height: 1.45;
+          letter-spacing: -0.015em;
+          opacity: 0.78;
+        }
+
+        .aboutFilmCopy {
+          position: relative;
+          z-index: 6;
+          overflow: visible;
+        }
+
+        .aboutFilmHeroTitle {
+          position: relative;
+          z-index: 7;
+          color: #ffffff;
+          opacity: 0.5;
+          letter-spacing: -0.02em !important;
+          pointer-events: none;
+          overflow: visible;
+          white-space: nowrap;
+          width: max-content;
+          max-width: none;
+        }
+
+        .aboutFilmVideoStage {
+          position: relative;
+          top: clamp(42px, 6vh, 72px);
+          z-index: 3;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          align-self: center;
+          overflow: hidden;
+          border-radius: 18px;
+          background: #000000;
+          box-shadow: 0 26px 70px rgba(16, 10, 30, 0.18);
+        }
+
+        .aboutFilmVideo {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          background: #000000;
+          pointer-events: none;
+          user-select: none;
+        }
+
+        .aboutFilmFooter {
+          position: relative;
+          z-index: 5;
+          display: block;
+          margin-top: clamp(58px, 8vh, 92px);
+          color: #ffffff;
+          font-size: 10px;
+          line-height: 1.35;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+        }
+
+
+
+        @media (max-width: 900px) {
+          .aboutFilmSection {
+            min-height: auto;
+          }
+
+          .aboutFilmVideoStage {
+            width: 100%;
+            top: 34px;
+            border-radius: 14px;
+          }
+
+          .aboutPurpose {
+            top: 170px;
+            width: min(340px, 42vw);
+          }
+
+          .aboutFilmHeroTitle {
+            letter-spacing: -0.015em !important;
+          }
+
+        }
+
+        @media (max-width: 700px) {
+          .aboutFilmPageTitle {
+            font-size: 16vw;
+          }
+
+          .aboutPurpose {
+            position: relative;
+            left: auto;
+            top: auto;
+            width: 100%;
+            margin: 10px 0 28px;
+          }
+
+          .aboutPurposeTitle {
+            font-size: 28px;
+          }
+
+          .aboutPurposeText {
+            max-width: 320px;
+            font-size: 14px;
+          }
+
+          .aboutFilmHeroTitle {
+            letter-spacing: -0.01em !important;
+          }
+
+          .aboutFilmFooter {
+            font-size: 8px;
+            letter-spacing: 0.13em;
           }
         }
 
