@@ -1868,3 +1868,62 @@ a {
     padding-right: 10px !important;
   }
 }
+
+
+/* ======================================================
+   MOBILE CLEANUP
+====================================================== */
+@media (max-width: 700px) {
+  .scrollText,
+  .heroFooter {
+    display: none !important;
+  }
+
+  .productMediaCaption,
+  .productStatement,
+  .productFooter {
+    display: none !important;
+  }
+}
+
+/* ======================================================
+   EXPERIENCE — MOBILE TITLE ONLY
+   Desktop keeps the original BEAUTY / EXPERIENCE line break.
+====================================================== */
+@media (max-width: 700px) {
+  .experienceSection .experienceIntro {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .experienceSection .experienceHeroTitle {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    line-height: 1 !important;
+  }
+
+  .experienceSection .experienceHeroTitle br {
+    display: none !important;
+  }
+
+  .experienceSection .experienceHeroBeauty,
+  .experienceSection .experienceHeroExperience {
+    display: block !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: clamp(36px, 10vw, 44px) !important;
+    line-height: 0.94 !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+}

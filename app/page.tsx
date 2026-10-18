@@ -182,6 +182,8 @@ export default function Home() {
       lettersContainer.querySelectorAll(".introSingleLetter");
 
     gsap.set(letters, {
+      xPercent: -50,
+      yPercent: -50,
       opacity: 0,
       scale: 0.82,
       y: 18,
@@ -766,9 +768,9 @@ export default function Home() {
           <div className="experienceMain">
             <div className="experienceIntro">
               <h2 className="contentSectionHeroTitle experienceHeroTitle">
-                BEAUTY
+                <span className="experienceHeroBeauty">BEAUTY</span>
                 <br />
-                EXPERIENCE
+                <span className="experienceHeroExperience">EXPERIENCE</span>
               </h2>
 
               <p className="experienceLead">
@@ -1901,7 +1903,40 @@ export default function Home() {
             animation-duration: 8s;
           }
         }
+
+        /* MOBILE ONLY: EXPERIENCE poster title spacing */
+        @media (max-width: 700px) {
+          .experienceSection .experienceHeroTitle {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+            white-space: normal !important;
+            line-height: 1 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0 !important;
+          }
+
+          .experienceSection .experienceHeroTitle br {
+            display: none !important;
+          }
+
+          .experienceSection .experienceHeroBeauty,
+          .experienceSection .experienceHeroExperience {
+            display: block !important;
+            width: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: clamp(36px, 10vw, 44px) !important;
+            line-height: 0.88 !important;
+            letter-spacing: -0.02em !important;
+            white-space: nowrap !important;
+          }
+        }
       `}</style>
+
+
     </>
   );
 }
