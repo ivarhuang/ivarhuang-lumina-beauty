@@ -2061,6 +2061,7 @@ export default function Home() {
           overflow: hidden;
           aspect-ratio: 3 / 2;
           background: rgba(255,255,255,0.16);
+          border-radius: 16px;
         }
 
         .shopGalleryMainMedia {
@@ -2127,6 +2128,7 @@ export default function Home() {
           overflow: hidden;
           border: 1px solid rgba(10,10,13,0.18);
           background: rgba(255,255,255,0.28);
+          border-radius: 8px;
         }
 
         .shopThumbActive .shopThumbMedia {
