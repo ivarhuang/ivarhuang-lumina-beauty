@@ -1094,7 +1094,6 @@ export default function Home() {
                           />
                         )}
                       </span>
-                      <span className="shopThumbLabel">{item.label}</span>
                     </button>
                   ))}
                 </div>
@@ -2144,15 +2143,6 @@ export default function Home() {
           object-position: center;
         }
 
-        .shopThumbLabel {
-          display: block;
-          margin-top: 6px;
-          font-size: 8px;
-          line-height: 1;
-          letter-spacing: 0.1em;
-          text-align: center;
-        }
-
         .shopPanel {
           min-height: 0;
           display: flex;
@@ -2344,10 +2334,6 @@ export default function Home() {
           .shopThumbMedia {
             width: 82px;
             aspect-ratio: 3 / 2;
-          }
-
-          .shopThumbLabel {
-            font-size: 7px;
           }
 
           .shopPanel {
