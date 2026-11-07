@@ -1,5 +1,11 @@
 # A1 Firmware Change Log
 
+## 1.0.7 — 2026-11-08
+
+- Clears a stale DFU request when the normal application is already running.
+- Allows normal startup to recover cleanly after an interrupted DFU or initial Bootloader installation test.
+- Retains the existing A1 treatment, IMU, BLE UART, and firmware-version protocol behavior.
+
 ## 1.0.6 — 2026-11-07
 
 - Validates source-controlled firmware versioning and the automatic GitHub release workflow.
