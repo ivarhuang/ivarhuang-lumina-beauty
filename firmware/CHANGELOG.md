@@ -1,5 +1,10 @@
 # A1 Firmware Change Log
 
+## 1.0.8 — 2026-11-08
+
+- Removes the 0.5-second hold after the startup image reveal.
+- Enters the Press Button startup screen immediately after the reveal animation completes.
+
 ## 1.0.7 — 2026-11-08
 
 - Clears a stale DFU request when the normal application is already running.
