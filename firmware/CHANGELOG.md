@@ -1,5 +1,10 @@
 # A1 Firmware Change Log
 
+## 1.0.9 — 2026-11-08
+
+- Removes the transition photo shown before the Press Button startup screen.
+- Keeps the center light-dot and horizontal-line animation, then enters Press Button immediately.
+
 ## 1.0.8 — 2026-11-08
 
 - Removes the 0.5-second hold after the startup image reveal.
