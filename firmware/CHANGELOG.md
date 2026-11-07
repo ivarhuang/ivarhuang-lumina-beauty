@@ -1,5 +1,10 @@
 # A1 Firmware Change Log
 
+## 1.0.6 — 2026-11-07
+
+- Validates source-controlled firmware versioning and the automatic GitHub release workflow.
+- Keeps the existing A1 runtime behavior unchanged for release-pipeline testing.
+
 ## 1.0.5 — 2026-11-07
 
 - Establishes the automatic GitHub firmware release workflow.
