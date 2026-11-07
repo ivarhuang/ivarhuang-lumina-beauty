@@ -1,5 +1,10 @@
 # A1 Firmware Change Log
 
+## 1.0.10 — 2026-11-08
+
+- Expands the Press Button startup screen upward and downward from the center horizontal line.
+- Removes the direct screen swap that could appear as a brief white flash below the line.
+
 ## 1.0.9 — 2026-11-08
 
 - Removes the transition photo shown before the Press Button startup screen.
