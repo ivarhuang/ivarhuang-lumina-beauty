@@ -1,5 +1,11 @@
 # A1 Firmware Change Log
 
+## 1.0.11 — 2026-11-08
+
+- Restores the stable startup transition image between the horizontal line and Press Button screen.
+- Removes the experimental direct Press Button reveal that caused a full-screen or lower-half white flash.
+- Keeps the shortened transition timing without the old 0.5-second image hold.
+
 ## 1.0.10 — 2026-11-08
 
 - Expands the Press Button startup screen upward and downward from the center horizontal line.
