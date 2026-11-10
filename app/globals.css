@@ -837,6 +837,10 @@ a {
 ====================================================== */
 
 @media (max-width: 700px) {
+  .introScreen {
+    height: 100svh;
+  }
+
   .introSingleLetter {
     width: 68vw;
 

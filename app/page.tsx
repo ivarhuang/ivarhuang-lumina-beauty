@@ -246,10 +246,10 @@ export default function Home() {
 
     const faceFocus = 32;
     const productFocus = 50;
-    const focusTransitionStart = 19;
-    const focusTransitionEnd = 23;
+    const focusTransitionStart = 17.25;
+    const focusTransitionEnd = 18;
 
-    if (video.currentTime >= 32.5) {
+    if (video.currentTime >= 32) {
       video.style.objectPosition = `${faceFocus}% center`;
       video.currentTime = 0.05;
       return;
