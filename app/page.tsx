@@ -244,14 +244,16 @@ export default function Home() {
 
     video.style.transition = "object-position 700ms ease-out";
 
+    const loopStart = 10;
+    const loopEnd = 32;
     const faceFocus = 32;
     const productFocus = 50;
     const focusTransitionStart = 17.25;
     const focusTransitionEnd = 18;
 
-    if (video.currentTime >= 32) {
+    if (video.currentTime < loopStart || video.currentTime >= loopEnd) {
       video.style.objectPosition = `${faceFocus}% center`;
-      video.currentTime = 0.05;
+      video.currentTime = loopStart;
       return;
     }
 
