@@ -1,6 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type SyntheticEvent,
+} from "react";
 import gsap from "gsap";
 
 /* ======================================================
@@ -224,6 +229,44 @@ export default function Home() {
         inline: "center",
       });
     });
+  };
+
+  const handleHeroTimeUpdate = (
+    event: SyntheticEvent<HTMLVideoElement>,
+  ) => {
+    const video = event.currentTarget;
+
+    if (!window.matchMedia("(max-width: 700px)").matches) {
+      video.style.removeProperty("object-position");
+      video.style.removeProperty("transition");
+      return;
+    }
+
+    video.style.transition = "object-position 700ms ease-out";
+
+    const faceFocus = 32;
+    const productFocus = 50;
+    const focusTransitionStart = 19;
+    const focusTransitionEnd = 23;
+
+    if (video.currentTime >= 32.5) {
+      video.style.objectPosition = `${faceFocus}% center`;
+      video.currentTime = 0.05;
+      return;
+    }
+
+    const transitionProgress = Math.min(
+      1,
+      Math.max(
+        0,
+        (video.currentTime - focusTransitionStart) /
+          (focusTransitionEnd - focusTransitionStart),
+      ),
+    );
+    const focusX =
+      faceFocus + (productFocus - faceFocus) * transitionProgress;
+
+    video.style.objectPosition = `${focusX}% center`;
   };
 
   useEffect(() => {
@@ -490,6 +533,10 @@ export default function Home() {
             loop
             playsInline
             preload="auto"
+            disablePictureInPicture
+            aria-hidden="true"
+            onLoadedMetadata={handleHeroTimeUpdate}
+            onTimeUpdate={handleHeroTimeUpdate}
           >
             <source
               src="/hero.mp4"
