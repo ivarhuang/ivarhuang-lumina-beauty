@@ -142,10 +142,11 @@ const introLetters = [
 
 const shopGallery = [
   {
-    type: "image",
-    src: "/shop-01.png",
+    type: "video",
+    src: "/shop-rewind.mp4",
+    poster: "/shop-01.png",
     label: "01",
-    alt: "LUMINA Beauty Device view 01",
+    alt: "LUMINA Beauty Device rewind assembly animation",
   },
   {
     type: "image",
