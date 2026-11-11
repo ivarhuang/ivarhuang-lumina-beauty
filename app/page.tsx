@@ -143,7 +143,7 @@ const introLetters = [
 const shopGallery = [
   {
     type: "video",
-    src: "/shop-rewind.mp4",
+    src: "/shop-rewind.webm",
     poster: "/shop-01.png",
     label: "01",
     alt: "LUMINA Beauty Device rewind assembly animation",
