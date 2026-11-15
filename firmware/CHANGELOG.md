@@ -1,5 +1,11 @@
 # A1 Firmware Change Log
 
+## 1.0.14 — 2026-11-16
+
+- Derives a stable BLE static address from each GR5525 chip's unique eFuse UID.
+- Avoids relying on an unprogrammed factory Bluetooth-address field.
+- Replaces the legacy shared address stored in NVDS after the first boot.
+
 ## 1.0.13 — 2026-11-16
 
 - Uses each GR5525 chip's factory-programmed Bluetooth address.
