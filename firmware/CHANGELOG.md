@@ -1,5 +1,11 @@
 # A1 Firmware Change Log
 
+## 1.0.12 — 2026-11-16
+
+- Corrects the built-in Mode 1 main-page artwork to Collagen Glow.
+- Keeps the shared Bluetooth, battery, and countdown graphics unchanged.
+- Keeps all Mode 1 treatment timing and hardware-output behavior unchanged.
+
 ## 1.0.11 — 2026-11-08
 
 - Restores the stable startup transition image between the horizontal line and Press Button screen.
