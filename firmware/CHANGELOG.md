@@ -2,9 +2,10 @@
 
 ## 1.0.12 — 2026-11-16
 
-- Corrects the built-in Mode 1 main-page artwork to Collagen Glow.
+- Corrects the built-in main-page artwork mapping for all four modes.
+- Swaps the Mode 1 and Mode 3 artwork, and swaps the Mode 2 and Mode 4 artwork.
 - Keeps the shared Bluetooth, battery, and countdown graphics unchanged.
-- Keeps all Mode 1 treatment timing and hardware-output behavior unchanged.
+- Keeps all treatment timing and hardware-output behavior unchanged.
 
 ## 1.0.11 — 2026-11-08
 
