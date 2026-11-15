@@ -1,5 +1,11 @@
 # A1 Firmware Change Log
 
+## 1.0.13 — 2026-11-16
+
+- Uses each GR5525 chip's factory-programmed Bluetooth address.
+- Replaces the legacy fixed address previously stored in NVDS on the next boot.
+- Keeps the product ID and advertised device name unchanged.
+
 ## 1.0.12 — 2026-11-16
 
 - Corrects the built-in main-page artwork mapping for all four modes.
