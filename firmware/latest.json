@@ -10,18 +10,6 @@
       "url": "https://github.com/ivarhuang/ivarhuang-lumina-beauty/releases/download/fw-v1.0.14/A1_FW_1.0.14.dfu.bin",
       "sha256": "f87f76e04c8dab1c843f641b86b315d560a9fdcab95b701e70c9fa1a5ad9ee57",
       "size": 500512
-    },
-    {
-      "version": "1.0.13",
-      "url": "https://github.com/ivarhuang/ivarhuang-lumina-beauty/releases/download/fw-v1.0.13/A1_FW_1.0.13.dfu.bin",
-      "sha256": "9cc46d75aa456d16173b2a3b87dee74f74f6f662aff3aebba70b46b941faf882",
-      "size": 500384
-    },
-    {
-      "version": "1.0.12",
-      "url": "https://github.com/ivarhuang/ivarhuang-lumina-beauty/releases/download/fw-v1.0.12/A1_FW_1.0.12.dfu.bin",
-      "sha256": "575195504c4a745c00ae3854aa17dc91aa2c46af20da892a13e34d96a153d3c0",
-      "size": 500392
     }
   ]
 }
