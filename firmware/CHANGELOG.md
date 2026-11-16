@@ -1,5 +1,13 @@
 # A1 Firmware Change Log
 
+## 1.0.16 — 2026-11-16
+
+- Latches the handpiece power supply before displaying the first startup light,
+  so releasing the power button after the light appears no longer removes power.
+- Preserves the existing startup-light timing and all established mode artwork.
+- Plays one confirmation beep when switching modes and removes the duplicate
+  beep that previously sounded after the new mode screen finished drawing.
+
 ## 1.0.15 — 2026-11-16
 
 - Keeps the removed GPIO28 status LED off during startup.
