@@ -1,5 +1,13 @@
 # A1 Firmware Change Log
 
+## 1.0.15 — 2026-11-16
+
+- Keeps the removed GPIO28 status LED off during startup.
+- Displays the LCD startup light immediately after LCD initialization while
+  the power-button hold continues to be confirmed.
+- Cancels the startup display and powers it down if the button is released
+  before the long-press confirmation.
+
 ## 1.0.14 — 2026-11-16
 
 - Derives a stable BLE static address from each GR5525 chip's unique eFuse UID.
