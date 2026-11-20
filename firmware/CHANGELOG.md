@@ -1,12 +1,16 @@
 # A1 Firmware Change Log
 
-## 1.0.19 — 2026-11-20
+## 1.0.18 — 2026-11-20
 
 - Stops the five startup connection dots after BLE connects and displays all
   five dots continuously with the CONNECTED state.
 - Restores audible notifications for BLE connection and disconnection events.
 - Uses the supplied matched CONNECTING and CONNECTED artwork with identical
   font styling and height, while removing the old status assets from firmware.
+- Narrows CONNECTING by five percent and matches both status labels to the
+  LUMINA silver-white palette.
+- Suppresses the connection tone when BLE was already connected during boot;
+  later connection and disconnection transitions remain audible.
 
 ## 1.0.17 — 2026-11-20
 
