@@ -1,5 +1,12 @@
 # A1 Firmware Change Log
 
+## 1.0.17 — 2026-11-20
+
+- Introduces the new LUMINA user interface for the startup and treatment screens.
+- Adds the revised startup transition and connection presentation.
+- Updates all four treatment-mode layouts while preserving their established
+  treatment behavior, countdown display, battery status, and BLE operation.
+
 ## 1.0.16 — 2026-11-16
 
 - Latches the handpiece power supply before displaying the first startup light,
